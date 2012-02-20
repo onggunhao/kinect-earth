@@ -1,14 +1,14 @@
 ﻿<Window x:Class="WpfApplication3.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="881" Width="1404">
-    <Grid>
-        <WebBrowser x:Name="Browser" Margin="0,0,260,55">
+        Title="MainWindow" Height="768" Width="1154">
+    <Grid FocusManager.FocusedElement="{Binding ElementName=Browser}">
+        <WebBrowser x:Name="Browser" Height="800" Width="1000" Margin="12,12,120,-83">
         </WebBrowser>
 
-        <Button x:Name="Button_W" Content="Forward" Width="200" Height="75" Margin="1170,476,12,292" />
-        <Button x:Name="Button_S" Content="Backward" Width="200" Height="75" Margin="1170,394,12,374" />
-        <Button x:Name="Button_A" Content="Left" Width="200" Height="75" Margin="1170,313,12,454" />
-        <Button x:Name="Button_D" Content="Right" Width="200" Height="75" Margin="1170,232,12,535" />
+        <Button x:Name="Button_W" Content="Forward" Width="50" Height="75" Margin="1070,268,12,386" IsCancel="False" IsEnabled="True" Focusable="False" Click="Button_W_Click"/>
+        <Button x:Name="Button_S" Content="Backward" Width="50" Height="75" Margin="1070,359,12,295" Focusable="False" />
+        <Button x:Name="Button_A" Content="Left" Width="50" Height="75" Margin="1070,541,12,113" Focusable="False" />
+        <Button x:Name="Button_D" Content="Right" Width="50" Height="75" Margin="1070,440,12,214" Focusable="False" />
     </Grid>
 </Window>

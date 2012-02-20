@@ -1,29 +1,16 @@
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\bin\Debug\WpfApplication3.exe
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\bin\Debug\WpfApplication3.pdb
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\obj\x86\Debug\ResolveAssemblyReference.cache
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\obj\x86\Debug\MainWindow.baml
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\obj\x86\Debug\MainWindow.g.cs
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\obj\x86\Debug\App.g.cs
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\obj\x86\Debug\WpfApplication3_MarkupCompile.cache
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\obj\x86\Debug\WpfApplication3.g.resources
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\obj\x86\Debug\WpfApplication3.Properties.Resources.resources
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\obj\x86\Debug\GenerateResource.read.1.tlog
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\obj\x86\Debug\GenerateResource.write.1.tlog
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\obj\x86\Debug\WpfApplication3.exe
-c:\users\daniel\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\obj\x86\Debug\WpfApplication3.pdb
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3.exe
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3.pdb
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\bin\Debug\WpfApplication3.exe
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\bin\Debug\WpfApplication3.pdb
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\MainWindow.baml
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\MainWindow.g.cs
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\App.g.cs
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3_MarkupCompile.cache
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3.g.resources
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3.Properties.Resources.resources
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\bin\Debug\InputSimulator.dll
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\bin\Debug\InputSimulator.pdb
-C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\p4-functional-prototype-1\WpfApplication3\bin\Debug\InputSimulator.xml
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\bin\Debug\WpfApplication3.exe
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\bin\Debug\WpfApplication3.pdb
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\bin\Debug\InputSimulator.dll
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\bin\Debug\InputSimulator.pdb
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\bin\Debug\InputSimulator.xml
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\MainWindow.baml
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\MainWindow.g.cs
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\App.g.cs
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3_MarkupCompile.cache
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3.g.resources
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3.Properties.Resources.resources
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3.exe
+C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3.pdb
