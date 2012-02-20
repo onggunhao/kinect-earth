@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Web;
 using System.Web.Services;
 using WindowsInput;
+using System.Timers;
 
 namespace WpfApplication3
 {
@@ -26,16 +27,36 @@ namespace WpfApplication3
         {
             InitializeComponent();
             //Browser.LoadCompleted += BrowserOnLoadCompleted;
-            Browser.Navigate(new Uri("C:/Users/Daniel/Documents/My Dropbox/2011-2012/Academics/Winter/CS247/p4-functional-prototype-1/index2.html"));
+            Browser.Navigate(new Uri("C:/Users/n00b/Downloads/CS247/CS247/p4-functional-prototype-1/index2.html"));
+            Keyboard.Focus(Browser);
         }
     
         private void BrowserOnLoadCompleted(object sender, NavigationEventArgs navigationEventsArgs)
         {
-            // To be filled out
+          
+        }
+
+        private void Button_W_Click(object sender, RoutedEventArgs e)
+        {
+            //InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_W);
+            
+            //InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_W);
+
+            for (int i = 1; i <= 2; i++)
+            {
+                Keyboard.Focus(Browser);
+
+
+                InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_W);
+
+                //InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_W);
+            }
+           
+            
         }
 
 
-
+            
 
     
     }

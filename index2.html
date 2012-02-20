@@ -8,7 +8,6 @@
    <script type="text/javascript">
       var ge;
       google.load("earth", "1");
-      google.setOnLoadCallback(init); // Calls specified once all HTML, requested APIs are loaded
 
       function init() {
          google.earth.createInstance('map3d', initCB, failureCB);
@@ -32,6 +31,7 @@
       function failureCB(errorCode) {		// TODO: compare to index.html's "instance"?
 		alert("Shit!");
       }
+      google.setOnLoadCallback(init); // Calls specified once all HTML, requested APIs are loaded
 
    </script>
 
