@@ -14,3 +14,5 @@ C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\ob
 C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3.exe
 C:\Users\n00b\Downloads\CS247\CS247\p4-functional-prototype-1\WpfApplication3\obj\x86\Debug\WpfApplication3.pdb
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\WpfApplication3\obj\x86\Debug\WpfApplication3.exe
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\WpfApplication3\obj\x86\Debug\WpfApplication3.pdb
