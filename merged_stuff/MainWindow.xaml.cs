@@ -106,7 +106,7 @@ namespace SkeletalTracking
                 nui.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(nui_SkeletonFrameReady);
 
                 //add event to receive video data
-                //nui.VideoFrameReady += new EventHandler<ImageFrameReadyEventArgs>(nui_VideoFrameReady);
+                nui.VideoFrameReady += new EventHandler<ImageFrameReadyEventArgs>(nui_VideoFrameReady);
 
                 //to experiment, toggle TransformSmooth between true & false and play with parameters            
                 nui.SkeletonEngine.TransformSmooth = true;
@@ -120,20 +120,20 @@ namespace SkeletalTracking
                 nui.SkeletonEngine.SmoothParameters = parameters;
 
                 //Open the video stream
-                //nui.VideoStream.Open(ImageStreamType.Video, 2, ImageResolution.Resolution640x480, ImageType.Color);
+                nui.VideoStream.Open(ImageStreamType.Video, 2, ImageResolution.Resolution640x480, ImageType.Color);
                 
                 //Force video to the background
-                Canvas.SetZIndex(Browser, -10000);
+                Canvas.SetZIndex(image1, -10000);
             }
         }
 
-        /*
+        
         void nui_VideoFrameReady(object sender, ImageFrameReadyEventArgs e)
         {
             //Automagically create BitmapSource for Video
             image1.Source = e.ImageFrame.ToBitmapSource();            
         }
-        */
+        
   
         void nui_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
