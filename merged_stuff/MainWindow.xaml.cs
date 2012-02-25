@@ -46,6 +46,7 @@ namespace SkeletalTracking
         SkeletonController exampleController;
         CustomController yourController;
         HuyenController huyen;
+        HyungguController hyunggu;
    
 
         //Holds the currently active controller
@@ -70,6 +71,7 @@ namespace SkeletalTracking
             yourController = new CustomController(this);
             exampleController = new SkeletonController(this);
             huyen = new HuyenController(this);
+            hyunggu = new HyungguController(this);
             currentController = yourController;
             InitTargets();
             i = 0;
@@ -223,6 +225,13 @@ namespace SkeletalTracking
             {
                 currentController = huyen;
                 controllerText.Content = "HUYEN CONTROLLER";
+                currentController.controllerActivated(targets);
+            }
+
+            if (e.Key == Key.D4)
+            {
+                currentController = hyunggu;
+                controllerText.Content = "HYUNGGU CONTROLLER";
                 currentController.controllerActivated(targets);
             }
 
