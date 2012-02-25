@@ -17,7 +17,19 @@
          
 		/* Basic initialization as per the Google Earth API documentation */
 		ge = instance;			// Specific instance of the Google Earth (you can have more than one)
-        ge.getWindow().setVisibility(true);
+		ge.getWindow().setVisibility(true);
+
+        /* Hyunggu's implementation*/
+		var link = ge.createLink('');
+		var href = 'http://www.stanford.edu/~hyunggu/etc/cs247.kml';
+
+		link.setHref(href);
+
+		var networkLink = ge.createNetworkLink('');
+		networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
+
+		ge.getFeatures().appendChild(networkLink);
+        /* End of Hyunggu's implementation*/
 		
 		ge.getOptions().setFlyToSpeed(50);
 		ge.getLayerRoot().enableLayerById(ge.LAYER_BUILDINGS, true);
@@ -34,6 +46,9 @@
       google.setOnLoadCallback(init); // Calls specified once all HTML, requested APIs are loaded
 
    </script>
+
+   <script src="https://www.google.com/uds/?file=earth&amp;v=1" type="text/javascript"></script>
+   <script src="https://www.google.com/uds/api/earth/1.0/109c7b2bae7fe6cc34ea875176165d81/default.I.js" type="text/javascript"></script>
 
 </head>
 <body onKeyDown="return keyDown(event);" onKeyUp="return keyUp(event);"> <!-- Triggers javascript in firstpersoncam.js controls -->

@@ -1,9 +1,9 @@
 ﻿<Window x:Class="SkeletalTracking.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="840" Width="1100" Closed="Window_Closed" Loaded="Window_Loaded" KeyDown="Window_KeyDown">
-        <Viewbox Stretch="Uniform" Height="840" Width="1062">
-            <Canvas Name="MainCanvas" Height="1300" Width="2300" FocusManager.FocusedElement="{Binding ElementName=Browser}">
+        Title="MainWindow" Height="718" Width="1262" Closed="Window_Closed" Loaded="Window_Loaded" KeyDown="Window_KeyDown">
+        <Viewbox Stretch="Uniform" Height="780" Width="1038">
+            <Canvas Name="MainCanvas" Height="840" Width="2068" FocusManager.FocusedElement="{Binding ElementName=Browser}">
                 <WebBrowser x:Name="Browser" Height="1222" Width="1605" Margin="12,12,120,-83" Canvas.Left="628" Canvas.Top="-5">
                 </WebBrowser>
                 <Image Opacity="0.9" Canvas.Left="0" Canvas.Top="35" Height="468" Name="image1" Stretch="Fill" Width="665" />

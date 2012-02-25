@@ -13,7 +13,6 @@ using WindowsInput;
 namespace SkeletalTracking
 {
 
-    // Controller 1: Shoulder-tracking of user orientation
     class CustomController : SkeletonController
     {
         private MainWindow window;
