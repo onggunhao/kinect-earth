@@ -32,7 +32,10 @@ namespace SkeletalTracking
         {
             InitializeComponent();
             //Browser.LoadCompleted += BrowserOnLoadCompleted;
+
+            //Make sure to change this to your directory
             Browser.Navigate(new Uri("C:/Users/Huyen Tran/cs247_prototype1/cs247-prototype/merged_stuff/index2.html"));
+           
             Keyboard.Focus(Browser);
         }
 
@@ -42,6 +45,8 @@ namespace SkeletalTracking
         //Targets and skeleton controller
         SkeletonController exampleController;
         CustomController yourController;
+        HuyenController huyen;
+   
 
         //Holds the currently active controller
         SkeletonController currentController;
@@ -64,6 +69,7 @@ namespace SkeletalTracking
             SetupKinect();
             yourController = new CustomController(this);
             exampleController = new SkeletonController(this);
+            huyen = new HuyenController(this);
             currentController = yourController;
             InitTargets();
             i = 0;
@@ -212,6 +218,14 @@ namespace SkeletalTracking
                 controllerText.Content = "Your Controller";
                 currentController.controllerActivated(targets);
             }
+
+            if (e.Key == Key.D3)
+            {
+                currentController = huyen;
+                controllerText.Content = "HUYEN CONTROLLER";
+                currentController.controllerActivated(targets);
+            }
+
         }
     }
 
