@@ -34,7 +34,7 @@ namespace SkeletalTracking
             //Browser.LoadCompleted += BrowserOnLoadCompleted;
 
             //Make sure to change this to your directory
-            Browser.Navigate(new Uri("C:/Users/Huyen Tran/cs247_prototype1/cs247-prototype/merged_stuff/index2.html"));
+            Browser.Navigate(new Uri("C:/Users/hyunggu/Documents/cs247-prototype/merged_stuff/index2.html"));
            
             Keyboard.Focus(Browser);
         }
