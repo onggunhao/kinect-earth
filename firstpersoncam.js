@@ -38,7 +38,7 @@ strafeRight = false;
 altitudeUp = false;
 altitudeDown = false;
 
-INITIAL_CAMERA_ALTITUDE = 1.8; // Roughly 6 feet tall
+INITIAL_CAMERA_ALTITUDE = 1.7; // Roughly 6 feet tall
 cameraAltitude = INITIAL_CAMERA_ALTITUDE;
 //----------------------------------------------------------------------------
 // Utility Functions
@@ -180,7 +180,6 @@ function FirstPersonCam() {
 
 FirstPersonCam.prototype.updateOrientation = function(dt) {
   var me = this;
-
   // Based on dt and input press, update turn angle.
   if (turnLeft || turnRight) {  
     var turnSpeed = 60.0; // radians/sec
@@ -189,12 +188,12 @@ FirstPersonCam.prototype.updateOrientation = function(dt) {
     me.headingAngle += turnSpeed * dt * Math.PI / 180.0;
   }
   if (tiltUp || tiltDown) {
-    var tiltSpeed = 60.0; // radians/sec
+    var tiltSpeed = 40.0; // radians/sec
     if (tiltDown)
-      tiltSpeed *= -1.0;
-    me.tiltAngle = me.tiltAngle + tiltSpeed * dt * Math.PI / 180.0;
+      tiltSpeed *= -1.0; 
+    me.tiltAngle = me.tiltAngle + tiltSpeed * dt * Math.PI / 180.0;	
     // Clamp
-    var tiltMax = 50.0 * Math.PI / 180.0;
+    var tiltMax = 90.0 * Math.PI / 180.0;
     var tiltMin = -90.0 * Math.PI / 180.0;
     if (me.tiltAngle > tiltMax)
       me.tiltAngle = tiltMax;
@@ -221,14 +220,14 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
   // Calculate strafe/forwards                              
   var strafe = 0;                             
   if (strafeLeft || strafeRight) {
-    var strafeVelocity = 30;
+    var strafeVelocity = 20;
     if (strafeLeft)
       strafeVelocity *= -1;      
     strafe = strafeVelocity * dt;
   }  
   var forward = 0;                             
   if (moveForward || moveBackward) {
-    var forwardVelocity = 100;
+    var forwardVelocity = 15;
     if (moveBackward)
       forwardVelocity *= -1;      
     forward = forwardVelocity * dt;
@@ -261,7 +260,7 @@ FirstPersonCam.prototype.updateCamera = function() {
   // Will put in a bit of a stride if the camera is at or below 1.7 meters
   var bounce = 0;  
   if (cameraAltitude <= INITIAL_CAMERA_ALTITUDE /* 1.7 */) {
-    bounce = 1.5 * Math.abs(Math.sin(4 * me.distanceTraveled *
+    bounce = 0.3 * Math.abs(Math.sin(25 * me.distanceTraveled *
                                      Math.PI / 180)); 
   }
     
