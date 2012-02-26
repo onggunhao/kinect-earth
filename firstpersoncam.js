@@ -191,10 +191,12 @@ FirstPersonCam.prototype.updateOrientation = function(dt) {
     var tiltSpeed = 40.0; // radians/sec
     if (tiltDown)
       tiltSpeed *= -1.0; 
+	if (tiltUp)
+	  tiltSpeed *= 1.0;
     me.tiltAngle = me.tiltAngle + tiltSpeed * dt * Math.PI / 180.0;	
     // Clamp
-    var tiltMax = 90.0 * Math.PI / 180.0;
-    var tiltMin = -90.0 * Math.PI / 180.0;
+    var tiltMax = 40.0 * Math.PI / 180.0;
+    var tiltMin = -40.0 * Math.PI / 180.0;
     if (me.tiltAngle > tiltMax)
       me.tiltAngle = tiltMax;
     if (me.tiltAngle < tiltMin)
@@ -266,7 +268,7 @@ FirstPersonCam.prototype.updateCamera = function() {
     
   // Update camera position. Note that tilt at 0 is facing directly downwards.
   //  We add 90 such that 90 degrees is facing forwards.
-  var la = ge.createLookAt('');
+  var la = ge.createCamera('');
   la.set(me.localAnchorLla[0], me.localAnchorLla[1],
          cameraAltitude + bounce,
          ge.ALTITUDE_RELATIVE_TO_SEA_FLOOR,
