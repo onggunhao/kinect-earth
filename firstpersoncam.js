@@ -38,6 +38,9 @@ strafeRight = false;
 altitudeUp = false;
 altitudeDown = false;
 
+forward_speed = 1;
+augmented_reality = false;
+
 INITIAL_CAMERA_ALTITUDE = 1.7; // Roughly 6 feet tall
 cameraAltitude = INITIAL_CAMERA_ALTITUDE;
 //----------------------------------------------------------------------------
@@ -91,11 +94,18 @@ function keyDown(event) {
     event.returnValue = false;
   } else if (event.keyCode == 87 || 
              event.keyCode == 119) {  // Move Forward.
-    moveForward = true;    
+    moveForward = true;  
+    forward_speed = 1;
     event.returnValue = false;    
+  } else if (event.keyCode == 50) {	  // Move Forward, faster
+  	moveForward = true;
+  	forward_speed = 3;
+  	event.returnValue = false;
   } else if (event.keyCode == 83 || 
-             event.keyCode == 115) {  // Move Forward.
+             event.keyCode == 115) {  // Move Backward
     moveBackward = true;     
+  } else if (event.keyCode == 89) {   // Y: Show augmented reality
+  	augmented_reality == true;
   } else {
     return true;
   }
@@ -136,6 +146,11 @@ function keyUp(event) {
              event.keyCode == 119) {  // Move Forward.
     moveForward = false;    
     event.returnValue = false;    
+  } else if (event.keyCode == 50) {	  // Move Forward, faster
+  	moveForward = false;
+  	forward_speed = 1;
+  } else if (event.keyCode == 89) {	  // Y: Show augmented reality
+  	augmented_reality == false;
   } else if (event.keyCode == 83 || 
              event.keyCode == 115) {  // Move Forward.
     moveBackward = false;       
@@ -182,7 +197,7 @@ FirstPersonCam.prototype.updateOrientation = function(dt) {
   var me = this;
   // Based on dt and input press, update turn angle.
   if (turnLeft || turnRight) {  
-    var turnSpeed = 60.0; // radians/sec
+    var turnSpeed = 40.0; // radians/sec
     if (turnLeft)
       turnSpeed *= -1.0;
     me.headingAngle += turnSpeed * dt * Math.PI / 180.0;
@@ -229,7 +244,7 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
   }  
   var forward = 0;                             
   if (moveForward || moveBackward) {
-    var forwardVelocity = 15;
+    var forwardVelocity = 15 * forward_speed;
     if (moveBackward)
       forwardVelocity *= -1;      
     forward = forwardVelocity * dt;
