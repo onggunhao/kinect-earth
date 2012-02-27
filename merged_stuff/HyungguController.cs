@@ -17,12 +17,10 @@ namespace SkeletalTracking
     {
         private MainWindow window;
 
-        ///////////////////////////////////////////////////
         // Constant Variables
         int LEFTSIDE   = 6;
         int RIGHTSIDE  = 7;
-        double THRESH = 0.05;
-        ///////////////////////////////////////////////////
+        double THRESH = 0.08;
 
         public HyungguController(MainWindow win)
             : base(win)
@@ -32,30 +30,74 @@ namespace SkeletalTracking
 
         public override void processSkeletonFrame(SkeletonData skeleton, Dictionary<int, Target> targets)
         {
-            ///////////////////////////////////////////////////////////////////////////////
+                // Detect Navigation.
+                // Get right foot position
+                Point rightFootPosition;
+                Joint rightFoot = skeleton.Joints[JointID.FootRight];
+                rightFootPosition = new Point(rightFoot.Position.X, rightFoot.Position.Z);
+
+                // Get left foot position
+                Point leftFootPosition;
+                Joint leftFoot = skeleton.Joints[JointID.FootLeft];
+                leftFootPosition = new Point(leftFoot.Position.X, leftFoot.Position.Z);
+
+                double feetDifferential = leftFootPosition.Y - rightFootPosition.Y;
+
+                if (feetDifferential > 0.1)
+                {
+                    // move forward (select 1)
+                    targets[2].setTargetUnselected();
+                    targets[3].setTargetUnselected();
+                    targets[1].setTargetSelected();
+                    InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_W);
+
+                }
+                else if (feetDifferential < -0.1)
+                {
+                    // move backward (select 3)
+                    targets[1].setTargetUnselected();
+                    targets[2].setTargetUnselected();
+                    targets[3].setTargetSelected();
+                    InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_S);
+                }
+                else
+                {
+                    // stay put (select 2)
+                    targets[1].setTargetUnselected();
+                    targets[3].setTargetUnselected();
+                    targets[2].setTargetSelected();
+                    InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_W);
+                    InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_S);
+                }
+
             // gesture recognition by Hyunggu 02/24/2012
             // Detect left-right hand navigation
             // Get right hand position
             Joint HandRight = skeleton.Joints[JointID.HandRight];
             Joint ElbowRight = skeleton.Joints[JointID.ElbowRight];
-            Joint ShoulderRight = skeleton.Joints[JointID.ShoulderRight];
 
-            Point HandRightPoint = new Point(HandRight.Position.X, HandRight.Position.Z);
-            Point ElbowRightPoint = new Point(ElbowRight.Position.X, ElbowRight.Position.Z);
-            Point ShoulderRightPoint = new Point(ShoulderRight.Position.X, ShoulderRight.Position.Z);
+            Point HandRightPoint = new Point(HandRight.Position.X, HandRight.Position.Y);
+            Point ElbowRightPoint = new Point(ElbowRight.Position.X, ElbowRight.Position.Y);
+           
+            // Get shoulder position
+            Joint RightShoulder = skeleton.Joints[JointID.ShoulderRight];
+            Point RightShoulderPoint = new Point(RightShoulder.Position.X, RightShoulder.Position.Y);
 
-            double diffHandShoulderRight = Math.Abs(HandRightPoint.Y - ShoulderRightPoint.Y);
+            
+
+            double diffHandShoulderRight = Math.Abs(HandRightPoint.Y - RightShoulderPoint.Y);
 
             // Gets left hand position
             Joint HandLeft = skeleton.Joints[JointID.HandLeft];
             Joint ElbowLeft = skeleton.Joints[JointID.ElbowLeft];
-            Joint ShoulderLeft = skeleton.Joints[JointID.ShoulderLeft];
 
-            Point HandLeftPoint = new Point(HandLeft.Position.X, HandLeft.Position.Z);
-            Point ElbowLeftPoint = new Point(ElbowLeft.Position.X, ElbowLeft.Position.Z);
-            Point ShoulderLeftPoint = new Point(ShoulderLeft.Position.X, ShoulderLeft.Position.Z);
+            Point HandLeftPoint = new Point(HandLeft.Position.X, HandLeft.Position.Y);
+            Point ElbowLeftPoint = new Point(ElbowLeft.Position.X, ElbowLeft.Position.Y);
 
-            double diffHandShoulderLeft = Math.Abs(HandLeftPoint.Y - ShoulderLeftPoint.Y);
+            Joint LeftShoulder = skeleton.Joints[JointID.ShoulderLeft];
+            Point LeftShoulderPoint = new Point(LeftShoulder.Position.X, LeftShoulder.Position.Y);
+
+            double diffHandShoulderLeft = Math.Abs(HandLeftPoint.Y - LeftShoulderPoint.Y);
 
             // right hand
             if (diffHandShoulderRight < THRESH && HandRightPoint.X > ElbowRightPoint.X) 
