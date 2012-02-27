@@ -38,6 +38,9 @@ strafeRight = false;
 altitudeUp = false;
 altitudeDown = false;
 
+forward_speed = 1;
+augmented_reality = false;
+
 INITIAL_CAMERA_ALTITUDE = 1.8; // Roughly 6 feet tall
 cameraAltitude = INITIAL_CAMERA_ALTITUDE;
 //----------------------------------------------------------------------------
@@ -93,9 +96,16 @@ function keyDown(event) {
              event.keyCode == 119) {  // Move Forward.
     moveForward = true;    
     event.returnValue = false;    
+  } else if (event.keyCode == 50) {	  // Move Forward, faster
+  	moveForward = true;
+  	forward_speed = 3;
+  	event.returnValue = false;
   } else if (event.keyCode == 83 || 
-             event.keyCode == 115) {  // Move Forward.
+             event.keyCode == 115) {  // Move Backward
     moveBackward = true;     
+  } else if (event.keyCode == 89) {   // Y: Show augmented reality
+  	augmented_reality == true;
+  	event.returnValue = false;
   } else {
     return true;
   }
@@ -136,9 +146,17 @@ function keyUp(event) {
              event.keyCode == 119) {  // Move Forward.
     moveForward = false;    
     event.returnValue = false;    
+  } else if (event.keyCode == 50) {	  // Move Forward, faster
+  	moveForward = false;
+  	forward_speed = 1;
+  	event.returnValue = false;
   } else if (event.keyCode == 83 || 
-             event.keyCode == 115) {  // Move Forward.
-    moveBackward = false;       
+             event.keyCode == 115) {  // Move Backward
+    moveBackward = false;  
+    event.returnValue = false;
+  } else if (event.keyCode == 89) {   // Y: Show augmented reality
+  	augmented_reality == false;
+  	event.returnValue = false;
   }
   return false;
 }
@@ -183,19 +201,19 @@ FirstPersonCam.prototype.updateOrientation = function(dt) {
 
   // Based on dt and input press, update turn angle.
   if (turnLeft || turnRight) {  
-    var turnSpeed = 60.0; // radians/sec
+    var turnSpeed = 40.0; // radians/sec
     if (turnLeft)
       turnSpeed *= -1.0;
     me.headingAngle += turnSpeed * dt * Math.PI / 180.0;
   }
   if (tiltUp || tiltDown) {
-    var tiltSpeed = 60.0; // radians/sec
+    var tiltSpeed = 40.0; // radians/sec
     if (tiltDown)
       tiltSpeed *= -1.0;
     me.tiltAngle = me.tiltAngle + tiltSpeed * dt * Math.PI / 180.0;
     // Clamp
-    var tiltMax = 50.0 * Math.PI / 180.0;
-    var tiltMin = -90.0 * Math.PI / 180.0;
+    var tiltMax = 60.0 * Math.PI / 180.0;
+    var tiltMin = -50.0 * Math.PI / 180.0;
     if (me.tiltAngle > tiltMax)
       me.tiltAngle = tiltMax;
     if (me.tiltAngle < tiltMin)
@@ -221,14 +239,14 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
   // Calculate strafe/forwards                              
   var strafe = 0;                             
   if (strafeLeft || strafeRight) {
-    var strafeVelocity = 30;
+    var strafeVelocity = 20;
     if (strafeLeft)
       strafeVelocity *= -1;      
     strafe = strafeVelocity * dt;
   }  
   var forward = 0;                             
   if (moveForward || moveBackward) {
-    var forwardVelocity = 100;
+    var forwardVelocity = 15 * forward_speed;
     if (moveBackward)
       forwardVelocity *= -1;      
     forward = forwardVelocity * dt;
@@ -261,13 +279,13 @@ FirstPersonCam.prototype.updateCamera = function() {
   // Will put in a bit of a stride if the camera is at or below 1.7 meters
   var bounce = 0;  
   if (cameraAltitude <= INITIAL_CAMERA_ALTITUDE /* 1.7 */) {
-    bounce = 1.5 * Math.abs(Math.sin(4 * me.distanceTraveled *
+    bounce = 0.3 * Math.abs(Math.sin(25 * me.distanceTraveled *
                                      Math.PI / 180)); 
   }
     
   // Update camera position. Note that tilt at 0 is facing directly downwards.
   //  We add 90 such that 90 degrees is facing forwards.
-  var la = ge.createLookAt('');
+  var la = ge.createCamera('');
   la.set(me.localAnchorLla[0], me.localAnchorLla[1],
          cameraAltitude + bounce,
          ge.ALTITUDE_RELATIVE_TO_SEA_FLOOR,
