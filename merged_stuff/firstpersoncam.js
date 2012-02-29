@@ -94,7 +94,8 @@ function keyDown(event) {
     event.returnValue = false;
   } else if (event.keyCode == 87 || 
              event.keyCode == 119) {  // Move Forward.
-    moveForward = true;    
+    moveForward = true;
+    forward_speed = 1;
     event.returnValue = false;    
   } else if (event.keyCode == 50) {	  // Move Forward, faster
   	moveForward = true;
@@ -201,7 +202,7 @@ FirstPersonCam.prototype.updateOrientation = function(dt) {
 
   // Based on dt and input press, update turn angle.
   if (turnLeft || turnRight) {  
-    var turnSpeed = 40.0; // radians/sec
+    var turnSpeed = 15.0; // radians/sec
     if (turnLeft)
       turnSpeed *= -1.0;
     me.headingAngle += turnSpeed * dt * Math.PI / 180.0;

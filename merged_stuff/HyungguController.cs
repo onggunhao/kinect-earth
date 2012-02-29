@@ -49,7 +49,16 @@ namespace SkeletalTracking
                     targets[2].setTargetUnselected();
                     targets[3].setTargetUnselected();
                     targets[1].setTargetSelected();
-                    InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_W);
+                    //InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_W);
+
+                    if (feetDifferential > 0.8)
+                    {
+                        InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_2); // faster
+                    }
+                    else
+                    {
+                        InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_W); // regular
+                    }
 
                 }
                 else if (feetDifferential < -0.1)
