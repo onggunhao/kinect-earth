@@ -39,7 +39,9 @@ altitudeUp = false;
 altitudeDown = false;
 
 forward_speed = 1;
+turn_speed = 1;
 augmented_reality = false;
+relocate_cam = false;
 
 INITIAL_CAMERA_ALTITUDE = 1.8; // Roughly 6 feet tall
 cameraAltitude = INITIAL_CAMERA_ALTITUDE;
@@ -63,6 +65,8 @@ function fixAngle(a) {
 //----------------------------------------------------------------------------
 
 function keyDown(event) {
+  var me = this;
+
   if (!event) {
     event = window.event;
   }
@@ -74,9 +78,19 @@ function keyDown(event) {
     event.returnValue = false;
   } else if (event.keyCode == 37) {  // Turn Left.
     turnLeft = true;
+    turn_speed = 1;
+    event.returnValue = false;
+  } else if (event.keyCode == 188) {    // Turn left FAST
+  	turnLeft = true;
+  	turn_speed = 5;
+    event.returnValue = false;
+  } else if (event.keyCode == 190) {    // Turn right FAST
+  	turnRight = true;
+  	turn_speed = 5;
     event.returnValue = false;
   } else if (event.keyCode == 39) {  // Turn Right.
     turnRight = true;
+    turn_speed = 1;
     event.returnValue = false;
   } else if (event.keyCode == 38) {  // Tilt Up.
     tiltUp = true;
@@ -103,9 +117,13 @@ function keyDown(event) {
   	event.returnValue = false;
   } else if (event.keyCode == 83 || 
              event.keyCode == 115) {  // Move Backward
-    moveBackward = true;     
+    moveBackward = true;    
+    event.returnValue = false;
   } else if (event.keyCode == 89) {   // Y: Show augmented reality
-  	augmented_reality == true;
+  	augmented_reality = true;
+  	event.returnValue = false;
+  } else if (event.keyCode == 48) {   // Key 0: relocate
+  	relocate_cam = true;
   	event.returnValue = false;
   } else {
     return true;
@@ -114,6 +132,8 @@ function keyDown(event) {
 }
 
 function keyUp(event) {
+  var me = this;
+
   if (!event) {
     event = window.event;
   } 
@@ -125,6 +145,14 @@ function keyUp(event) {
     event.returnValue = false;
   } else if (event.keyCode == 37) {  // Left.
     turnLeft = false;
+    event.returnValue = false;
+  } else if (event.keyCode == 188) {    // Turn left FAST
+  	turnLeft = false;
+  	turn_speed = 1;
+    event.returnValue = false;
+  } else if (event.keyCode == 190) {    // Turn right FAST
+  	turnRight = false;
+  	turn_speed = 1;
     event.returnValue = false;
   } else if (event.keyCode == 39) {  // Right.
     turnRight = false;
@@ -158,7 +186,10 @@ function keyUp(event) {
   } else if (event.keyCode == 89) {   // Y: Show augmented reality
   	augmented_reality == false;
   	event.returnValue = false;
-  }
+  } else if (event.keyCode == 48) {   // Key 0: relocate
+  	relocate_cam = false;
+  	event.returnValue = false;
+  } 
   return false;
 }
 
@@ -202,7 +233,7 @@ FirstPersonCam.prototype.updateOrientation = function(dt) {
 
   // Based on dt and input press, update turn angle.
   if (turnLeft || turnRight) {  
-    var turnSpeed = 15.0; // radians/sec
+    var turnSpeed = 15.0 * turn_speed; // radians/sec
     if (turnLeft)
       turnSpeed *= -1.0;
     me.headingAngle += turnSpeed * dt * Math.PI / 180.0;
@@ -237,38 +268,46 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
                              -me.headingAngle);                             
   var rightVec = V3.rotate(localToGlobalFrame[0], localToGlobalFrame[2],
                              -me.headingAngle);
-  // Calculate strafe/forwards                              
-  var strafe = 0;                             
-  if (strafeLeft || strafeRight) {
-    var strafeVelocity = 20;
-    if (strafeLeft)
-      strafeVelocity *= -1;      
-    strafe = strafeVelocity * dt;
-  }  
-  var forward = 0;                             
-  if (moveForward || moveBackward) {
-    var forwardVelocity = 15 * forward_speed;
-    if (moveBackward)
-      forwardVelocity *= -1;      
-    forward = forwardVelocity * dt;
-  }  
-  if (altitudeUp) {
-    cameraAltitude += 1.0;
-  } else if (altitudeDown) {
-    cameraAltitude -= 1.0;
-  }
-  cameraAltitude = Math.max(0, cameraAltitude);
+  var strafe = 0; 
   
-  me.distanceTraveled += forward;
-
-  // Add the change in position due to forward velocity and strafe velocity 
-  me.localAnchorCartesian = V3.add(me.localAnchorCartesian, 
-                                   V3.scale(rightVec, strafe));
-  me.localAnchorCartesian = V3.add(me.localAnchorCartesian, 
-                                   V3.scale(headingVec, forward));
-                                                                        
-  // Convert cartesian to Lat Lon Altitude for camera setup later on.
-  me.localAnchorLla = V3.cartesianToLatLonAlt(me.localAnchorCartesian);
+  	if (relocate_cam) {
+  	  me.localAnchorLla = [37.79333, -122.40, 0];  // San Francisco
+      me.localAnchorCartesian = V3.latLonAltToCartesian(me.localAnchorLla);
+      me.headingAngle = 0;
+      me.tiltAngle = 0;
+  	} else {
+	  // Calculate strafe/forwards  
+	  if (strafeLeft || strafeRight) {
+		var strafeVelocity = 20;
+		if (strafeLeft)
+		  strafeVelocity *= -1;      
+		strafe = strafeVelocity * dt;
+	  }  
+	  var forward = 0;                             
+	  if (moveForward || moveBackward) {
+		var forwardVelocity = 15 * forward_speed;
+		if (moveBackward)
+		  forwardVelocity *= -1;      
+		forward = forwardVelocity * dt;
+	  }  
+	  if (altitudeUp) {
+		cameraAltitude += 1.0;
+	  } else if (altitudeDown) {
+		cameraAltitude -= 1.0;
+	  }
+	  cameraAltitude = Math.max(0, cameraAltitude);
+	  
+	  me.distanceTraveled += forward;
+	
+	  // Add the change in position due to forward velocity and strafe velocity 
+	  me.localAnchorCartesian = V3.add(me.localAnchorCartesian, 
+									   V3.scale(rightVec, strafe));
+	  me.localAnchorCartesian = V3.add(me.localAnchorCartesian, 
+									   V3.scale(headingVec, forward));
+																			
+	  // Convert cartesian to Lat Lon Altitude for camera setup later on.
+	  me.localAnchorLla = V3.cartesianToLatLonAlt(me.localAnchorCartesian);
+  	}
 }
 
 FirstPersonCam.prototype.updateCamera = function() {
