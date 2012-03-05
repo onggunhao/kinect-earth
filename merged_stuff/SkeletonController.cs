@@ -17,7 +17,7 @@ namespace SkeletalTracking
 
         public SkeletonController(MainWindow win)
         {
-            window = win; 
+            window = win;
         }
 
         //This function will be implemented by you in the subclass files provided.
@@ -40,7 +40,7 @@ namespace SkeletalTracking
                 //Scale the joints to the size of the window
                 Joint leftHand = skeleton.Joints[JointID.HandLeft].ScaleTo(640, 480, window.k_xMaxJointScale, window.k_yMaxJointScale);
                 Joint rightHand = skeleton.Joints[JointID.HandRight].ScaleTo(640, 480, window.k_xMaxJointScale, window.k_yMaxJointScale);
-                
+
                 //Calculate how far our left hand is from the target in both x and y directions
                 double deltaX_left = Math.Abs(leftHand.Position.X - cur.getXPosition());
                 double deltaY_left = Math.Abs(leftHand.Position.Y - cur.getYPosition());
@@ -65,17 +65,19 @@ namespace SkeletalTracking
         //This is called when the controller becomes active. This allows you to place your targets and do any 
         //initialization that you don't want to repeat with each new skeleton frame. You may also 
         //directly move the targets in the MainWindow.xaml file to achieve the same initial repositioning.
-        public virtual void controllerActivated(Dictionary<int, Target> targets){
+        public virtual void controllerActivated(Dictionary<int, Target> targets)
+        {
             //targets[1].setTargetPosition(80, 200);
             //targets[2].hideTarget();
             //targets[2].showTarget();
             //targets[5].isHidden();
             //targets[3].setTargetHighlighted();
-            targets[6].hideTarget();
-            targets[7].hideTarget();
+            //targets[6].hideTarget();
+            //targets[7].hideTarget();
 
             //reset 5 targets in arc
-            targets[1].setTargetUnselected();
+
+            /*targets[1].setTargetUnselected();
             targets[1].showTarget();
             targets[1].setTargetPosition(23, 220);
             targets[2].setTargetUnselected();
@@ -90,6 +92,7 @@ namespace SkeletalTracking
             targets[5].setTargetUnselected();
             targets[5].showTarget();
             targets[5].setTargetPosition(505, 220);
+             * */
         }
 
         //The default value that gets passed to MaxSkeletonX and MaxSkeletonY in the Coding4Fun Joint.ScaleTo function is 1.5f
@@ -110,7 +113,7 @@ namespace SkeletalTracking
         private Brush _target_color;
         private TextBlock _canvasEl;
         private bool selected;
-        
+
 
         public Target(TextBlock target, int givenID)
         {
@@ -129,20 +132,20 @@ namespace SkeletalTracking
         public void setTargetHighlighted()
         {
             _target_color = new SolidColorBrush(Color.FromRgb(238, 221, 130));
-            _canvasEl.Background = new VisualBrush(generateEllipse((double)_canvasEl.GetValue(Canvas.WidthProperty) / 2, _target_color));
+            _canvasEl.Background = new VisualBrush(generateRectangle((double)_canvasEl.GetValue(Canvas.WidthProperty), (double)_canvasEl.GetValue(Canvas.HeightProperty), _target_color));
         }
 
         public void setTargetSelected()
         {
             _target_color = new SolidColorBrush(Color.FromRgb(34, 139, 34));
-            _canvasEl.Background = new VisualBrush(generateEllipse((double)_canvasEl.GetValue(Canvas.WidthProperty) / 2, _target_color));
+            _canvasEl.Background = new VisualBrush(generateRectangle((double)_canvasEl.GetValue(Canvas.WidthProperty), (double)_canvasEl.GetValue(Canvas.HeightProperty), _target_color));
             selected = true;
         }
 
         public void setTargetUnselected()
         {
             _target_color = new SolidColorBrush(Colors.Red);
-            _canvasEl.Background = new VisualBrush(generateEllipse((double)_canvasEl.GetValue(Canvas.WidthProperty) / 2, _target_color));
+            _canvasEl.Background = new VisualBrush(generateRectangle((double)_canvasEl.GetValue(Canvas.WidthProperty), (double)_canvasEl.GetValue(Canvas.HeightProperty), _target_color));
             selected = false;
         }
 
@@ -171,11 +174,12 @@ namespace SkeletalTracking
         }
 
         public double getYPosition()
-        {           
+        {
             return (double)_canvasEl.GetValue(Canvas.TopProperty) + ((double)_canvasEl.GetValue(Canvas.WidthProperty) / 2);
         }
 
-        private Ellipse generateEllipse(double r, Brush color){
+        private Ellipse generateEllipse(double r, Brush color)
+        {
             var circle = new Ellipse();
             circle.Width = r * 2;
             circle.Height = r * 2;
@@ -183,6 +187,17 @@ namespace SkeletalTracking
             circle.StrokeThickness = 1;
             circle.Fill = color;
             return circle;
+        }
+
+        private Rectangle generateRectangle(double w, double h, Brush color)
+        {
+            var rect = new Rectangle();
+            rect.Width = w;
+            rect.Height = h;
+            rect.Stroke = new SolidColorBrush(Colors.Black);
+            rect.StrokeThickness = 0;
+            rect.Fill = color;
+            return rect;
         }
 
 

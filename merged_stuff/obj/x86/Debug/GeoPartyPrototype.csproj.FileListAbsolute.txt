@@ -51,3 +51,20 @@ C:\Users\Huyen Tran\GeoParty\cs247-prototype\merged_stuff\obj\x86\Debug\Skeletal
 C:\Users\Huyen Tran\GeoParty\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
 C:\Users\Huyen Tran\GeoParty\cs247-prototype\merged_stuff\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\Huyen Tran\GeoParty\cs247-prototype\merged_stuff\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.pdb
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\bin\Debug\SkeletalTracking.exe
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\bin\Debug\SkeletalTracking.pdb
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\bin\Debug\InputSimulator.pdb
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\bin\Debug\InputSimulator.xml
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\MainWindow.baml
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\MainWindow.g.cs
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\App.g.cs
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking_MarkupCompile.cache
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.g.resources
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\GenerateResource.write.1.tlog
