@@ -194,7 +194,7 @@ namespace SkeletalTracking
             var rect = new Rectangle();
             rect.Width = w;
             rect.Height = h;
-            rect.Stroke = new SolidColorBrush(Colors.Black);
+           // rect.Stroke = new SolidColorBrush(Colors.Black);
             rect.StrokeThickness = 0;
             rect.Fill = color;
             return rect;

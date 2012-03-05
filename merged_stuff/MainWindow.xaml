@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Closed="Window_Closed" Loaded="Window_Loaded" KeyDown="Window_KeyDown" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="0" d:DesignWidth="1293" SizeToContent="WidthAndHeight">
     <Canvas Name="MainCanvas" Height="800" Width="1247" FocusManager.FocusedElement="{Binding ElementName=Browser}">
-        <WebBrowser x:Name="Browser" Height="731" Width="1011" Margin="12,12,120,-83" Canvas.Left="194" Canvas.Top="16">
+        <WebBrowser x:Name="Browser" Height="731" Width="1011" Margin="12,12,120,-83" Canvas.Left="194" Canvas.Top="25">
         </WebBrowser>
-        <Image Opacity="0.9" Canvas.Left="33" Canvas.Top="596" Height="163" Name="image1" Stretch="Fill" Width="167" />
+        <Image Opacity="0.9" Canvas.Left="33" Canvas.Top="603" Height="163" Name="image1" Stretch="Fill" Width="167" />
         <Ellipse Canvas.Left="646" Canvas.Top="248" Height="50" Name="headEllipse" Stroke="Black" Width="50" Fill="Orange" />
         <Ellipse Canvas.Left="759" Canvas.Top="405" Height="35" Name="rightEllipse" Stroke="Black" Width="35" Fill="Blue" />
         <Ellipse Canvas.Left="532" Canvas.Top="405" Fill="Blue" Height="35" Name="leftEllipse" Stroke="Black" Width="35" />
@@ -24,8 +24,8 @@
         <Ellipse Canvas.Left="679" Canvas.Top="470" Fill="Bisque" Height="16" Name="kneeRight" Stroke="Black" Width="16" />
         <Ellipse Canvas.Left="656" Canvas.Top="405" Fill="BlueViolet" Height="16" Name="hipCenter" Stroke="Black" Width="16" />
         <TextBlock Name="target1" Text="1"
-           Height="28"
-           Width="1235"
+           Height="31"
+           Width="1247"
            Canvas.Left="0" Canvas.Top="0">
           <TextBlock.Background>
             <VisualBrush>
@@ -53,8 +53,8 @@
         </TextBlock>
         <TextBlock Name="target3" Text="3"
            Height="28"
-           Width="1250"
-           Canvas.Left="0" Canvas.Top="755">
+           Width="1247"
+           Canvas.Left="0" Canvas.Top="772"><TextBlock.Foreground><SolidColorBrush /></TextBlock.Foreground>
           <TextBlock.Background>
             <VisualBrush>
               <VisualBrush.Visual>
@@ -95,9 +95,9 @@
         </TextBlock>
 
         <TextBlock Name="targetLeft" Text="L"
-           Height="783"
-           Width="28"
-           Padding="27,10,0,0" Canvas.Left="0" Canvas.Top="0" FontSize="40">
+           Height="828"
+           Width="27"
+           Padding="27,10,0,0" Canvas.Left="0" Canvas.Top="-15" FontSize="40">
           <TextBlock.Background>
             <VisualBrush>
               <VisualBrush.Visual>
@@ -109,9 +109,9 @@
           </TextBlock.Background>
         </TextBlock>
         <TextBlock Name="targetRight" Text="R"
-           Height="783"
-           Width="28"
-           Padding="27,10,0,0" Canvas.Left="1222" Canvas.Top="0" FontSize="40">
+           Height="828"
+           Width="25"
+           Padding="27,10,0,0" Canvas.Left="1222" Canvas.Top="-15" FontSize="40"><TextBlock.Foreground><SolidColorBrush /></TextBlock.Foreground>
           <TextBlock.Background>
             <VisualBrush>
               <VisualBrush.Visual>
