@@ -68,3 +68,5 @@ C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTrack
 C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
 C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\n00b\Downloads\cs247-prototype\merged_stuff\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Huyen Tran\Week9\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\Huyen Tran\Week9\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.pdb
