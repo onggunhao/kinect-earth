@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Closed="Window_Closed" Loaded="Window_Loaded" KeyDown="Window_KeyDown" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="0" d:DesignWidth="1293" SizeToContent="WidthAndHeight">
     <Canvas Name="MainCanvas" Height="800" Width="1247" FocusManager.FocusedElement="{Binding ElementName=Browser}">
-        <WebBrowser x:Name="Browser" Height="722" Width="1192" Margin="12,12,120,-83" Canvas.Left="13" Canvas.Top="16">
+        <WebBrowser x:Name="Browser" Height="731" Width="1011" Margin="12,12,120,-83" Canvas.Left="194" Canvas.Top="16">
         </WebBrowser>
-        <Image Opacity="0.9" Canvas.Left="532" Canvas.Top="492" Height="192" Name="image1" Stretch="Fill" Width="268" />
+        <Image Opacity="0.9" Canvas.Left="33" Canvas.Top="596" Height="163" Name="image1" Stretch="Fill" Width="167" />
         <Ellipse Canvas.Left="646" Canvas.Top="248" Height="50" Name="headEllipse" Stroke="Black" Width="50" Fill="Orange" />
         <Ellipse Canvas.Left="759" Canvas.Top="405" Height="35" Name="rightEllipse" Stroke="Black" Width="35" Fill="Blue" />
         <Ellipse Canvas.Left="532" Canvas.Top="405" Fill="Blue" Height="35" Name="leftEllipse" Stroke="Black" Width="35" />
@@ -32,7 +32,7 @@
               <VisualBrush.Visual>
                  <Rectangle Height="65"
                           Width="65"
-                          Fill="#FFFF3800" Stroke="Black" />
+                          Fill="#1A3780" Stroke="Black" />
               </VisualBrush.Visual>
             </VisualBrush>
           </TextBlock.Background>
@@ -60,15 +60,15 @@
               <VisualBrush.Visual>
                  <Rectangle Height="65"
                           Width="65"
-                          Fill="#FFFF3800" Stroke="Black" />
+                          Fill="#1A3780" Stroke="Black" />
               </VisualBrush.Visual>
             </VisualBrush>
           </TextBlock.Background>
         </TextBlock>
         <TextBlock Name="target4" Text="4 Menu"
-           Height="62"
-           Width="175"
-           Padding="27,10,0,0" Canvas.Left="33" Canvas.Top="28" FontSize="40">
+           Height="58"
+           Width="167"
+           Padding="27,10,0,0" Canvas.Left="33" Canvas.Top="37" FontSize="32">
           <TextBlock.Background>
             <VisualBrush>
               <VisualBrush.Visual>
@@ -80,9 +80,9 @@
           </TextBlock.Background>
         </TextBlock>
         <TextBlock Name="target5" Text="5 Option"
-           Height="72"
-           Width="195"
-           Padding="27,10,0,0" Canvas.Left="95" Canvas.Top="97" FontSize="40">
+           Height="71"
+           Width="167"
+           Padding="27,10,0,0" Canvas.Left="33" Canvas.Top="101" FontSize="28">
           <TextBlock.Background>
             <VisualBrush>
               <VisualBrush.Visual>
@@ -103,7 +103,7 @@
               <VisualBrush.Visual>
                  <Rectangle Height="65"
                           Width="65"
-                          Fill="#FFFF3800" Stroke="Black" />
+                          Fill="#1A3780" Stroke="Black" />
               </VisualBrush.Visual>
             </VisualBrush>
           </TextBlock.Background>
@@ -117,7 +117,7 @@
               <VisualBrush.Visual>
                  <Rectangle Height="65"
                           Width="65"
-                          Fill="#FFFF3800" Stroke="Black" />
+                          Fill="#1A3780" Stroke="Black" />
               </VisualBrush.Visual>
             </VisualBrush>
           </TextBlock.Background>
