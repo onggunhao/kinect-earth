@@ -43,6 +43,10 @@ turn_speed = 1;
 augmented_reality = false;
 relocate_cam = false;
 
+/* Augmented reality variables */
+var networkLink = null;
+
+/* Initialized Variables */
 INITIAL_CAMERA_ALTITUDE = 1.8; // Roughly 6 feet tall
 cameraAltitude = INITIAL_CAMERA_ALTITUDE;
 //----------------------------------------------------------------------------
@@ -64,7 +68,7 @@ function fixAngle(a) {
 // Input Handlers
 //----------------------------------------------------------------------------
 
-function keyDown(event) {
+function CamKeyDown(event) {
   var me = this;
 
   if (!event) {
@@ -119,8 +123,15 @@ function keyDown(event) {
              event.keyCode == 115) {  // Move Backward
     moveBackward = true;    
     event.returnValue = false;
-  } else if (event.keyCode == 89) {   // Y: Show augmented reality
-  	event.returnValue = false;
+  } else if (augmented_reality == false && event.keyCode == 89) {   // Y: Show augmented reality
+  		var link = ge.createLink('');		// class ge inherited from index2.html
+		var href = 'http://www.stanford.edu/~hyunggu/etc/cs247.kml';
+	  	link.setHref(href);
+	  	networkLink = ge.createNetworkLink('');
+	  	networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
+	  	ge.getFeatures().appendChild(networkLink);
+		augmented_reality = true;
+  		event.returnValue = false;
   } else if (event.keyCode == 48) {   // Key 0: relocate
   	relocate_cam = true;
   	event.returnValue = false;
@@ -130,7 +141,7 @@ function keyDown(event) {
   return false;
 }
 
-function keyUp(event) {
+function CamKeyUp(event) {
   var me = this;
 
   if (!event) {
@@ -183,7 +194,8 @@ function keyUp(event) {
     moveBackward = false;  
     event.returnValue = false;
   } else if (event.keyCode == 89) {   // Y: Show augmented reality
-  	augmented_reality == false;
+  	ge.getFeatures().removeChild(networkLink);
+  	augmented_reality = false;
   	event.returnValue = false;
   } else if (event.keyCode == 48) {   // Key 0: relocate
   	relocate_cam = false;
@@ -294,7 +306,7 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
 	  } else if (altitudeDown) {
 		cameraAltitude -= 1.0;
 	  }
-	  cameraAltitude = Math.max(0, cameraAltitude);
+	  cameraAltitude = Math.max(1.8, cameraAltitude);
 	  
 	  me.distanceTraveled += forward;
 	
