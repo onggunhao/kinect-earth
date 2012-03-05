@@ -43,6 +43,10 @@ turn_speed = 1;
 augmented_reality = false;
 relocate_cam = false;
 
+/* Augmented reality variables */
+var networkLink = null;
+
+/* Initialized Variables */
 INITIAL_CAMERA_ALTITUDE = 1.8; // Roughly 6 feet tall
 cameraAltitude = INITIAL_CAMERA_ALTITUDE;
 //----------------------------------------------------------------------------
@@ -70,10 +74,10 @@ function keyDown(event) {
   if (!event) {
     event = window.event;
   }
-  if (event.keyCode == 33) {  // Altitude Up
+  if (event.keyCode == 85) {  // Altitude Up
     altitudeUp = true;
     event.returnValue = false;
-  } else if (event.keyCode == 34) {  // Altitude Down
+  } else if (event.keyCode == 74) {  // Altitude Down
     altitudeDown = true;
     event.returnValue = false;
   } else if (event.keyCode == 37) {  // Turn Left.
@@ -119,9 +123,15 @@ function keyDown(event) {
              event.keyCode == 115) {  // Move Backward
     moveBackward = true;    
     event.returnValue = false;
-  } else if (event.keyCode == 89) {   // Y: Show augmented reality
-  	augmented_reality = true;
-  	event.returnValue = false;
+  } else if (augmented_reality == false && event.keyCode == 89) {   // Y: Show augmented reality
+  		var link = ge.createLink('');		// class ge inherited from index2.html
+		var href = 'http://www.stanford.edu/~hyunggu/etc/cs247.kml';
+	  	link.setHref(href);
+	  	networkLink = ge.createNetworkLink('');
+	  	networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
+	  	ge.getFeatures().appendChild(networkLink);
+		augmented_reality = true;
+  		event.returnValue = false;
   } else if (event.keyCode == 48) {   // Key 0: relocate
   	relocate_cam = true;
   	event.returnValue = false;
@@ -137,10 +147,10 @@ function keyUp(event) {
   if (!event) {
     event = window.event;
   } 
-  if (event.keyCode == 33) {  // Altitude Up
+  if (event.keyCode == 85) {  // Altitude Up
     altitudeUp = false;
     event.returnValue = false;
-  } else if (event.keyCode == 34) {  // Altitude Down
+  } else if (event.keyCode == 74) {  // Altitude Down
     altitudeDown = false;
     event.returnValue = false;
   } else if (event.keyCode == 37) {  // Left.
@@ -184,7 +194,8 @@ function keyUp(event) {
     moveBackward = false;  
     event.returnValue = false;
   } else if (event.keyCode == 89) {   // Y: Show augmented reality
-  	augmented_reality == false;
+  	ge.getFeatures().removeChild(networkLink);
+  	augmented_reality = false;
   	event.returnValue = false;
   } else if (event.keyCode == 48) {   // Key 0: relocate
   	relocate_cam = false;
@@ -295,7 +306,7 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
 	  } else if (altitudeDown) {
 		cameraAltitude -= 1.0;
 	  }
-	  cameraAltitude = Math.max(0, cameraAltitude);
+	  cameraAltitude = Math.max(1.8, cameraAltitude);
 	  
 	  me.distanceTraveled += forward;
 	
