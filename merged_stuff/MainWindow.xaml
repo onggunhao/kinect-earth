@@ -48,7 +48,7 @@
               <VisualBrush.Visual>
                  <Rectangle Height="65"
                           Width="65"
-                          Fill="#FFFF3800" Stroke="Black" />
+                          Fill="#0038E0" Stroke="Black" />
               </VisualBrush.Visual>
             </VisualBrush>
           </TextBlock.Background>
@@ -76,7 +76,7 @@
               <VisualBrush.Visual>
                  <Rectangle Height="65"
                           Width="65"
-                          Fill="#FFFF3800" Stroke="Black" />
+                          Fill="#00661A" Stroke="Black" />
               </VisualBrush.Visual>
             </VisualBrush>
           </TextBlock.Background>
@@ -90,7 +90,7 @@
               <VisualBrush.Visual>
                  <Rectangle Height="65"
                           Width="65"
-                          Fill="#FFFF3800" Stroke="Black" />
+                          Fill="#00661A" Stroke="Black" />
               </VisualBrush.Visual>
             </VisualBrush>
           </TextBlock.Background>
