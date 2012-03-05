@@ -117,7 +117,7 @@ namespace SkeletalTracking
 
         public Target(TextBlock target, int givenID)
         {
-            _target_color = new SolidColorBrush(Colors.Red);
+            _target_color = new SolidColorBrush(Color.FromRgb(5, 59,118));
             _canvasEl = target;
             id = givenID;
             showTarget();
@@ -131,20 +131,20 @@ namespace SkeletalTracking
 
         public void setTargetHighlighted()
         {
-            _target_color = new SolidColorBrush(Color.FromRgb(238, 221, 130));
+            _target_color = new SolidColorBrush(Color.FromRgb(19,130,194));
             _canvasEl.Background = new VisualBrush(generateRectangle((double)_canvasEl.GetValue(Canvas.WidthProperty), (double)_canvasEl.GetValue(Canvas.HeightProperty), _target_color));
         }
 
         public void setTargetSelected()
         {
-            _target_color = new SolidColorBrush(Color.FromRgb(34, 139, 34));
+            _target_color = new SolidColorBrush(Color.FromRgb(19,130,194));
             _canvasEl.Background = new VisualBrush(generateRectangle((double)_canvasEl.GetValue(Canvas.WidthProperty), (double)_canvasEl.GetValue(Canvas.HeightProperty), _target_color));
             selected = true;
         }
 
         public void setTargetUnselected()
         {
-            _target_color = new SolidColorBrush(Colors.Red);
+            _target_color = new SolidColorBrush(Color.FromRgb(5, 59, 118));
             _canvasEl.Background = new VisualBrush(generateRectangle((double)_canvasEl.GetValue(Canvas.WidthProperty), (double)_canvasEl.GetValue(Canvas.HeightProperty), _target_color));
             selected = false;
         }
@@ -194,7 +194,7 @@ namespace SkeletalTracking
             var rect = new Rectangle();
             rect.Width = w;
             rect.Height = h;
-            rect.Stroke = new SolidColorBrush(Colors.Black);
+           // rect.Stroke = new SolidColorBrush(Colors.Black);
             rect.StrokeThickness = 0;
             rect.Fill = color;
             return rect;

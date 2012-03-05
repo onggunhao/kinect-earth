@@ -31,16 +31,6 @@
       function failureCB(errorCode) {		// TODO: compare to index.html's "instance"?
 		alert("Shit!");
       }
-      
-      /*function keyDown(event) {
-      	
-      }
-      function keyUp(event) {
-      	if (augmented_reality == true && event.keyCode == 89) {
-      		
-      	}
-      }
-      */
       google.setOnLoadCallback(init); // Calls specified once all HTML, requested APIs are loaded
 
    </script>
@@ -49,7 +39,8 @@
    <script src="https://www.google.com/uds/api/earth/1.0/109c7b2bae7fe6cc34ea875176165d81/default.I.js" type="text/javascript"></script>
 
 </head>
-<body onKeyDown="return CamKeyDown(event);" onKeyUp="return CamKeyUp(event);"> <!-- Triggers javascript in firstpersoncam.js controls -->
+<body onKeyDown="return keyDown(event);" onKeyUp="return keyUp(event);"> <!-- Triggers javascript in firstpersoncam.js controls -->
    <div id="map3d" style="height: 600px; width: 800px;"></div>
+
 </body>
 </html>

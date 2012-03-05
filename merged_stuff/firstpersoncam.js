@@ -68,7 +68,7 @@ function fixAngle(a) {
 // Input Handlers
 //----------------------------------------------------------------------------
 
-function CamKeyDown(event) {
+function keyDown(event) {
   var me = this;
 
   if (!event) {
@@ -141,7 +141,7 @@ function CamKeyDown(event) {
   return false;
 }
 
-function CamKeyUp(event) {
+function keyUp(event) {
   var me = this;
 
   if (!event) {

@@ -90,7 +90,7 @@ namespace SkeletalTracking
 
                 if (feetDifferential > 0.1)
                 {
-                    // move forward (select 1)
+                    // move forward (highlight 1)
                     targets[2].setTargetUnselected();
                     targets[3].setTargetUnselected();
                     targets[1].setTargetSelected();
