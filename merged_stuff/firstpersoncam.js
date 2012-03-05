@@ -70,10 +70,10 @@ function keyDown(event) {
   if (!event) {
     event = window.event;
   }
-  if (event.keyCode == 33) {  // Altitude Up
+  if (event.keyCode == 85) {  // Altitude Up
     altitudeUp = true;
     event.returnValue = false;
-  } else if (event.keyCode == 34) {  // Altitude Down
+  } else if (event.keyCode == 74) {  // Altitude Down
     altitudeDown = true;
     event.returnValue = false;
   } else if (event.keyCode == 37) {  // Turn Left.
@@ -137,10 +137,10 @@ function keyUp(event) {
   if (!event) {
     event = window.event;
   } 
-  if (event.keyCode == 33) {  // Altitude Up
+  if (event.keyCode == 85) {  // Altitude Up
     altitudeUp = false;
     event.returnValue = false;
-  } else if (event.keyCode == 34) {  // Altitude Down
+  } else if (event.keyCode == 74) {  // Altitude Down
     altitudeDown = false;
     event.returnValue = false;
   } else if (event.keyCode == 37) {  // Left.
