@@ -120,7 +120,6 @@ function keyDown(event) {
     moveBackward = true;    
     event.returnValue = false;
   } else if (event.keyCode == 89) {   // Y: Show augmented reality
-  	augmented_reality = true;
   	event.returnValue = false;
   } else if (event.keyCode == 48) {   // Key 0: relocate
   	relocate_cam = true;

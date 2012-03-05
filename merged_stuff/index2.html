@@ -7,6 +7,12 @@
    <script type="text/javascript" src="math3d.js"></script>
    <script type="text/javascript">
       var ge;
+      
+      
+      /* Augmented reality stuff */
+      var augmented_reality = false;
+	  
+            
       google.load("earth", "1");
 
       function init() {
@@ -19,18 +25,6 @@
 		ge = instance;			// Specific instance of the Google Earth (you can have more than one)
 		ge.getWindow().setVisibility(true);
 
-        /* Hyunggu's implementation*/
-		var link = ge.createLink('');
-		var href = 'http://www.stanford.edu/~hyunggu/etc/cs247.kml';
-
-		link.setHref(href);
-
-		var networkLink = ge.createNetworkLink('');
-		networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
-
-		ge.getFeatures().appendChild(networkLink);
-        /* End of Hyunggu's implementation*/
-		
 		ge.getOptions().setFlyToSpeed(50);
 		ge.getLayerRoot().enableLayerById(ge.LAYER_BUILDINGS, true);
 		 
@@ -41,6 +35,26 @@
 
       function failureCB(errorCode) {		// TODO: compare to index.html's "instance"?
 		alert("Shit!");
+      }
+      
+      function keyDown(event) {
+      	if (augmented_reality == false && event.keyCode == 89) {   // Y: Show augmented reality
+  			var link = ge.createLink('');
+	  		var href = 'http://www.stanford.edu/~hyunggu/etc/cs247.kml';
+
+	  		link.setHref(href);
+	  		var networkLink = ge.createNetworkLink('');
+	  		networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
+
+			ge.getFeatures().appendChild(networkLink);
+			augmented_reality = true;
+        	/* End of Hyunggu's implementation*/
+  		}	
+      }
+      function keyUp(event) {
+      	if (augmented_reality == true && event.keyCode == 89) {
+      		
+      	}
       }
       google.setOnLoadCallback(init); // Calls specified once all HTML, requested APIs are loaded
 
