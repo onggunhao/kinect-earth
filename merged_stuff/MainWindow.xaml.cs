@@ -34,7 +34,8 @@ namespace SkeletalTracking
             //Browser.LoadCompleted += BrowserOnLoadCompleted;
 
             //Make sure to change this to your directory
-            Browser.Navigate(new Uri("C:/Users/n00b/Downloads/cs247-prototype/merged_stuff/index2.html"));
+            //Browser.Navigate(new Uri("C:/Users/n00b/Downloads/cs247-prototype/merged_stuff/index2.html"));
+            Browser.Navigate(new Uri("C:/Users/Huyen Tran/Desktop/Sigh/merged_stuff/index2.html"));
            
             Keyboard.Focus(Browser);
         }
@@ -47,6 +48,11 @@ namespace SkeletalTracking
         CustomController yourController;
         HuyenController huyen;
         HyungguController hyunggu;
+        SuperController super;
+
+        //First User Skeleton Boolean
+        Boolean firstUserSkeletonDetected = false;
+        int userSkeletonID;
    
 
         //Holds the currently active controller
@@ -232,6 +238,13 @@ namespace SkeletalTracking
             {
                 currentController = hyunggu;
                 controllerText.Content = "HYUNGGU CONTROLLER";
+                currentController.controllerActivated(targets);
+            }
+
+            if (e.Key == Key.D9)
+            {
+                currentController = super;
+                controllerText.Content = "SUPER CONTROLLER";
                 currentController.controllerActivated(targets);
             }
 
