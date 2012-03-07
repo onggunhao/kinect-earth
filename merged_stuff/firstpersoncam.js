@@ -86,11 +86,11 @@ function keyDown(event) {
     event.returnValue = false;
   } else if (event.keyCode == 188) {    // Turn left FAST
   	turnLeft = true;
-  	turn_speed = 5;
+  	turn_speed = 2.75;
     event.returnValue = false;
   } else if (event.keyCode == 190) {    // Turn right FAST
   	turnRight = true;
-  	turn_speed = 5;
+  	turn_speed = 2.75;
     event.returnValue = false;
   } else if (event.keyCode == 39) {  // Turn Right.
     turnRight = true;

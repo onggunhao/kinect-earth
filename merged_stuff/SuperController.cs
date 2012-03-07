@@ -22,7 +22,7 @@ namespace SkeletalTracking
         int forwardCount = 0;
 
         Boolean AugmentedRealityOn = false;
-        double THRESH = 0.1;
+        double THRESH = 0.3;
 
         public SuperController(MainWindow win)
             : base(win)
@@ -46,6 +46,7 @@ namespace SkeletalTracking
 
             double feetDifferential = leftFootPosition.Y - rightFootPosition.Y;
 
+            // Move front
             if (feetDifferential > 0.1)
             {
                 // move forward slow (highlight 1 = middle)
@@ -65,6 +66,7 @@ namespace SkeletalTracking
                 }
 
             }
+            // Move backward
             else if (feetDifferential < -0.1)
             {
                 // move backward (select 3)
@@ -93,13 +95,13 @@ namespace SkeletalTracking
 
             double shoulderDifferential = leftNav.Y - rightNav.Y;
 
-            if (shoulderDifferential > 0.035)       // Right
+            if (shoulderDifferential > 0.05)       // Right
             {
                 targets[6].setTargetSelected();
                 targets[7].setTargetUnselected();
                 InputSimulator.SimulateKeyDown(VirtualKeyCode.LEFT);
             }
-            else if (shoulderDifferential < -0.035)       // Left
+            else if (shoulderDifferential < -0.05)       // Left
             {
                 targets[6].setTargetUnselected();
                 targets[7].setTargetSelected();
