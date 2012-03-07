@@ -22,7 +22,7 @@ namespace SkeletalTracking
         int forwardCount = 0;
 
         Boolean AugmentedRealityOn = false;
-        double THRESH = 0.08;
+        double THRESH = 0.1;
 
         public SuperController(MainWindow win)
             : base(win)
@@ -125,8 +125,6 @@ namespace SkeletalTracking
             // Get shoulder position
             Joint RightShoulder = skeleton.Joints[JointID.ShoulderRight];
             Point RightShoulderPoint = new Point(RightShoulder.Position.X, RightShoulder.Position.Y);
-
-
 
             double diffHandShoulderRight = Math.Abs(HandRightPoint.Y - RightShoulderPoint.Y);
 
