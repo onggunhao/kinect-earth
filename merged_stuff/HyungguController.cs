@@ -20,7 +20,7 @@ namespace SkeletalTracking
         // Constant Variables
         int LEFTSIDE   = 6;
         int RIGHTSIDE  = 7;
-        double THRESH = 0.08;
+        double THRESH = 0.1;
 
         public HyungguController(MainWindow win)
             : base(win)
@@ -49,9 +49,8 @@ namespace SkeletalTracking
                     targets[2].setTargetUnselected();
                     targets[3].setTargetUnselected();
                     targets[1].setTargetSelected();
-                    //InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_W);
 
-                    if (feetDifferential > 0.8)
+                    if (feetDifferential > 0.35)
                     {
                         InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_2); // faster
                     }
@@ -135,6 +134,7 @@ namespace SkeletalTracking
         public override void controllerActivated(Dictionary<int, Target> targets)
         {
             // setup targets
+            /*
             targets[1].setTargetUnselected();
             targets[1].showTarget();
             targets[1].setTargetPosition(262, 30);
@@ -160,6 +160,7 @@ namespace SkeletalTracking
             targets[LEFTSIDE].showTarget();
             targets[RIGHTSIDE].setTargetUnselected();
             targets[RIGHTSIDE].showTarget();
+             */
         }
     }
 }
