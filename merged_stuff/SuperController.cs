@@ -21,6 +21,9 @@ namespace SkeletalTracking
         public int selectCount = 0;
         int forwardCount = 0;
 
+        Boolean AugmentedRealityOn = false;
+        double THRESH = 0.08;
+
         public SuperController(MainWindow win)
             : base(win)
         {
@@ -90,13 +93,13 @@ namespace SkeletalTracking
 
             double shoulderDifferential = leftNav.Y - rightNav.Y;
 
-            if (shoulderDifferential > 0.05)       // Right
+            if (shoulderDifferential > 0.035)       // Right
             {
                 targets[6].setTargetSelected();
                 targets[7].setTargetUnselected();
                 InputSimulator.SimulateKeyDown(VirtualKeyCode.LEFT);
             }
-            else if (shoulderDifferential < -0.05)       // Left
+            else if (shoulderDifferential < -0.035)       // Left
             {
                 targets[6].setTargetUnselected();
                 targets[7].setTargetSelected();
@@ -108,6 +111,58 @@ namespace SkeletalTracking
                 targets[7].setTargetUnselected();
                 InputSimulator.SimulateKeyUp(VirtualKeyCode.RIGHT);
                 InputSimulator.SimulateKeyUp(VirtualKeyCode.LEFT);
+            }
+
+            // gesture recognition by Hyunggu 02/24/2012
+            // Detect left-right hand navigation
+            // Get right hand position
+            Joint HandRight = skeleton.Joints[JointID.HandRight];
+            Joint ElbowRight = skeleton.Joints[JointID.ElbowRight];
+
+            Point HandRightPoint = new Point(HandRight.Position.X, HandRight.Position.Y);
+            Point ElbowRightPoint = new Point(ElbowRight.Position.X, ElbowRight.Position.Y);
+
+            // Get shoulder position
+            Joint RightShoulder = skeleton.Joints[JointID.ShoulderRight];
+            Point RightShoulderPoint = new Point(RightShoulder.Position.X, RightShoulder.Position.Y);
+
+
+
+            double diffHandShoulderRight = Math.Abs(HandRightPoint.Y - RightShoulderPoint.Y);
+
+            // Gets left hand position
+            Joint HandLeft = skeleton.Joints[JointID.HandLeft];
+            Joint ElbowLeft = skeleton.Joints[JointID.ElbowLeft];
+
+            Point HandLeftPoint = new Point(HandLeft.Position.X, HandLeft.Position.Y);
+            Point ElbowLeftPoint = new Point(ElbowLeft.Position.X, ElbowLeft.Position.Y);
+
+            Joint LeftShoulder = skeleton.Joints[JointID.ShoulderLeft];
+            Point LeftShoulderPoint = new Point(LeftShoulder.Position.X, LeftShoulder.Position.Y);
+
+            double diffHandShoulderLeft = Math.Abs(HandLeftPoint.Y - LeftShoulderPoint.Y);
+
+            // right hand
+            if (diffHandShoulderRight < THRESH && HandRightPoint.X > ElbowRightPoint.X)
+            {
+                targets[6].setTargetUnselected();
+                targets[7].setTargetSelected();
+                InputSimulator.SimulateKeyDown(VirtualKeyCode.OEM_PERIOD);
+            }
+            // left hand
+            else if (diffHandShoulderLeft < THRESH && HandLeftPoint.X < ElbowLeftPoint.X)
+            {
+                targets[6].setTargetSelected();
+                targets[7].setTargetUnselected();
+                InputSimulator.SimulateKeyDown(VirtualKeyCode.OEM_COMMA);
+            }
+            // neither right nor left hand
+            else
+            {
+                targets[6].setTargetUnselected();
+                targets[7].setTargetUnselected();
+                InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_PERIOD);
+                InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_COMMA);
             }
 
             // Detect Birdwatcher Gesture
@@ -147,25 +202,25 @@ namespace SkeletalTracking
             {
                 // Birdwatcher! (highlight 4 and show 5)
                 InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_Y); // show augmented reality
-                //targets[4].showTarget();
+                AugmentedRealityOn = true;
                 targets[4].setTargetSelected();
-                //targets[5].showTarget();
 
                 // hide navigation targets 1,2,3
                 targets[1].setTargetUnselected();
                 targets[2].setTargetUnselected();
                 targets[3].setTargetUnselected();
-                //targets[1].hideTarget();
-                //targets[2].hideTarget();
-                //targets[3].hideTarget();
+
                 targets[6].setTargetUnselected();
                 targets[7].setTargetUnselected();
-                //targets[6].hideTarget();
-                //targets[7].hideTarget();
             }
             else
             {
-                InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_Y);
+                if (AugmentedRealityOn)
+                {
+                    InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_Y);
+                    AugmentedRealityOn = false;
+                }
+
             }
         }
 
