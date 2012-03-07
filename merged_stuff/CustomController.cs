@@ -20,6 +20,7 @@ namespace SkeletalTracking
         // Variables to keep "time"
         public int selectCount = 0;
         int forwardCount = 0;
+        Boolean AugmentedRealityOn = false;
 
         public CustomController(MainWindow win)
             : base(win)
@@ -29,7 +30,7 @@ namespace SkeletalTracking
 
         public override void processSkeletonFrame(SkeletonData skeleton, Dictionary<int, Target> targets)
         {
-
+            /*
             if (targets[4].isSelected())
             {
                 // Birdwatcher Menu (targets 4, 5) is displayed
@@ -62,9 +63,11 @@ namespace SkeletalTracking
                     targets[5].setTargetUnselected();
                     selectCount = 0; // reset the count
                 }
+           
             }
             else
             {
+             */
                 // Birdwatcher Menu is NOT up. Detect Navigation.
                 // Get right foot position
                 Point rightFootPosition;
@@ -193,7 +196,16 @@ namespace SkeletalTracking
                     targets[6].setTargetUnselected();
                     targets[7].setTargetUnselected();
                 }
-            }
+                else
+                {
+                    if (AugmentedRealityOn)
+                    {
+                        InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_Y);
+                        AugmentedRealityOn = false;
+                    }
+
+                }
+            //}
         }
 
         public override void controllerActivated(Dictionary<int, Target> targets)

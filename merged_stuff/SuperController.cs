@@ -141,7 +141,7 @@ namespace SkeletalTracking
             Point LeftShoulderPoint = new Point(LeftShoulder.Position.X, LeftShoulder.Position.Y);
 
             double diffHandShoulderLeft = Math.Abs(HandLeftPoint.Y - LeftShoulderPoint.Y);
-
+        
             // right hand
             if (diffHandShoulderRight < THRESH && HandRightPoint.X > ElbowRightPoint.X)
             {

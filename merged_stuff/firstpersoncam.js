@@ -125,7 +125,7 @@ function keyDown(event) {
     event.returnValue = false;
   } else if (augmented_reality == false && event.keyCode == 89) {   // Y: Show augmented reality
   		var link = ge.createLink('');		// class ge inherited from index2.html
-		var href = 'http://www.stanford.edu/~hyunggu/etc/cs247.kml';
+		var href = 'http://www.stanford.edu/~hyunggu/etc/cs247_twit.kml';
 	  	link.setHref(href);
 	  	networkLink = ge.createNetworkLink('');
 	  	networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
