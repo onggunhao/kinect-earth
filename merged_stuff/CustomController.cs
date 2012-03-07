@@ -89,7 +89,7 @@ namespace SkeletalTracking
                     targets[1].setTargetHighlighted();
                     //InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_W); // regular
 
-                    if (feetDifferential > 0.35)
+                    if (feetDifferential > 0.5)
                     {
                         targets[1].setTargetSelected();
                         InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_2); // faster
@@ -128,17 +128,33 @@ namespace SkeletalTracking
 
                 double shoulderDifferential = leftNav.Y - rightNav.Y;
 
-                if (shoulderDifferential > 0.05)       // Right
+                if (shoulderDifferential > 0.08)       // Right
                 {
                     targets[6].setTargetSelected();
                     targets[7].setTargetUnselected();
-                    InputSimulator.SimulateKeyDown(VirtualKeyCode.LEFT);
+                    if (shoulderDifferential > 0.2)
+                    {
+                        InputSimulator.SimulateKeyDown(VirtualKeyCode.OEM_COMMA);
+                    }
+                    else
+                    {
+                        InputSimulator.SimulateKeyDown(VirtualKeyCode.LEFT);
+                    }
+                   
                 }
-                else if (shoulderDifferential < -0.05)       // Left
+                else if (shoulderDifferential < -0.08)       // Left
                 {
                     targets[6].setTargetUnselected();
                     targets[7].setTargetSelected();
-                    InputSimulator.SimulateKeyDown(VirtualKeyCode.RIGHT);
+
+                    if (shoulderDifferential < -0.2)
+                    {
+                        InputSimulator.SimulateKeyDown(VirtualKeyCode.OEM_PERIOD);
+                    }
+                    else
+                    {
+                        InputSimulator.SimulateKeyDown(VirtualKeyCode.RIGHT);
+                    }
                 }
                 else
                 {
