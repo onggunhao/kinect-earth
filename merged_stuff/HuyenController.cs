@@ -128,6 +128,7 @@ namespace SkeletalTracking
 
         public override void controllerActivated(Dictionary<int, Target> targets)
         {
+            /*
             targets[1].setTargetUnselected();
             targets[1].showTarget();
             targets[1].setTargetPosition(262, 30);
@@ -149,6 +150,7 @@ namespace SkeletalTracking
             targets[6].hideTarget();
             targets[7].setTargetUnselected();
             targets[7].hideTarget();
+             */
         }
     }
 }
