@@ -51,7 +51,7 @@ namespace SkeletalTracking
                     targets[3].setTargetUnselected();
                     targets[1].setTargetSelected();
 
-                    if (feetDifferential > 0.35)
+                    if (feetDifferential > 0.5)
                     {
                         InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_2); // faster
                     }

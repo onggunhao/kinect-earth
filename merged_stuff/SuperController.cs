@@ -73,7 +73,7 @@ namespace SkeletalTracking
                 targets[3].setTargetUnselected();
                 targets[1].setTargetHighlighted();
 
-                if (feetDifferential > 0.35)
+                if (feetDifferential > 0.5)
                 {
                     // move forward fast (select 1)
                     targets[1].setTargetSelected();
