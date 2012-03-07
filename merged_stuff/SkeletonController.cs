@@ -131,7 +131,7 @@ namespace SkeletalTracking
 
         public void setTargetHighlighted()
         {
-            _target_color = new SolidColorBrush(Color.FromRgb(19,130,194));
+            _target_color = new SolidColorBrush(Color.FromRgb(27,135,224));
             _canvasEl.Background = new VisualBrush(generateRectangle((double)_canvasEl.GetValue(Canvas.WidthProperty), (double)_canvasEl.GetValue(Canvas.HeightProperty), _target_color));
         }
 
