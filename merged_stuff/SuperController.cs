@@ -33,7 +33,26 @@ namespace SkeletalTracking
         public override void processSkeletonFrame(SkeletonData skeleton, Dictionary<int, Target> targets)
         {
 
-            // Birdwatcher Menu is NOT up. Detect Navigation.
+            // Detect walking navigation.
+            detectWalking(skeleton, targets);
+
+            // Detect left-right shoulder turning navigation
+            detectShoulderTurning(skeleton, targets);
+
+            // Detect arm turning navigation (Hyunggu 02/24/2012)
+            detectArmTurning(skeleton, targets);
+            
+            // Detect Birdwatcher Gesture
+            detectBirdwatcher(skeleton, targets);
+            
+        }
+
+        public override void controllerActivated(Dictionary<int, Target> targets)
+        {
+
+        }
+
+        private void detectWalking(SkeletonData skeleton, Dictionary<int, Target> targets) {
             // Get right foot position
             Point rightFootPosition;
             Joint rightFoot = skeleton.Joints[JointID.FootRight];
@@ -84,8 +103,10 @@ namespace SkeletalTracking
                 InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_W);
                 InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_S);
             }
+        }
 
-            // Detect left-right shoulder navigation
+        private void detectShoulderTurning(SkeletonData skeleton, Dictionary<int, Target> targets)
+        {
             // Gets right shoulder position
             Joint rightShoulder = skeleton.Joints[JointID.ShoulderRight];
             Point rightNav = new Point(rightShoulder.Position.X, rightShoulder.Position.Z);
@@ -114,9 +135,10 @@ namespace SkeletalTracking
                 InputSimulator.SimulateKeyUp(VirtualKeyCode.RIGHT);
                 InputSimulator.SimulateKeyUp(VirtualKeyCode.LEFT);
             }
+        }
 
-            // gesture recognition by Hyunggu 02/24/2012
-            // Detect left-right hand navigation
+        private void detectArmTurning(SkeletonData skeleton, Dictionary<int, Target> targets)
+        {
             // Get right hand position
             Joint HandRight = skeleton.Joints[JointID.HandRight];
             Joint ElbowRight = skeleton.Joints[JointID.ElbowRight];
@@ -141,7 +163,7 @@ namespace SkeletalTracking
             Point LeftShoulderPoint = new Point(LeftShoulder.Position.X, LeftShoulder.Position.Y);
 
             double diffHandShoulderLeft = Math.Abs(HandLeftPoint.Y - LeftShoulderPoint.Y);
-        
+
             // right hand
             if (diffHandShoulderRight < THRESH && HandRightPoint.X > ElbowRightPoint.X)
             {
@@ -164,8 +186,10 @@ namespace SkeletalTracking
                 InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_PERIOD);
                 InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_COMMA);
             }
+        }
 
-            // Detect Birdwatcher Gesture
+        private void detectBirdwatcher(SkeletonData skeleton, Dictionary<int, Target> targets)
+        {
             // Get head position
             Point headPosition;
             Joint head = skeleton.Joints[JointID.Head];
@@ -182,7 +206,7 @@ namespace SkeletalTracking
 
             // Get right shoulder position
             Point rightShoulderPosition;
-            //Joint rightShoulder = skeleton.Joints[JointID.ShoulderRight];
+            Joint rightShoulder = skeleton.Joints[JointID.ShoulderRight];
             rightShoulderPosition = new Point(rightShoulder.Position.X, rightShoulder.Position.Y);
 
             //Calculate how far our right hand is from target 5 in both x and y directions
@@ -220,13 +244,7 @@ namespace SkeletalTracking
                     InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_Y);
                     AugmentedRealityOn = false;
                 }
-
             }
-        }
-
-        public override void controllerActivated(Dictionary<int, Target> targets)
-        {
-
         }
     }
 }
