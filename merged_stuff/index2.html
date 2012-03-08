@@ -2,6 +2,7 @@
 <html>
 <head>
    <title>CS247 GeoParty!!</title>
+   <link rel="Stylesheet" type="text/css" href="style.css"></link>
    <script type="text/javascript" src="https://www.google.com/jsapi?key=AIzaSyBaPOMfVAm_WwTJxaBYuJBgsr4caKOjiSs"> </script>
    <script type="text/javascript" src="firstpersoncam.js"></script>
    <script type="text/javascript" src="math3d.js"></script>
@@ -12,8 +13,26 @@
 
       function init() {
          google.earth.createInstance('map3d', initCB, failureCB);
-      }
+     }
 
+     function createIcon(href, x, y, width, height, visible) {
+         var icon = ge.createIcon('');
+         icon.setHref(href);
+         // Oscar peterson
+         var overlay = ge.createScreenOverlay('');
+         overlay.setDrawOrder(1 || 0);
+         overlay.setVisibility(visible || false);
+         overlay.setIcon(icon);
+         overlay.getOverlayXY().set(x, ge.UNITS_PIXELS, y, ge.UNITS_INSET_PIXELS);
+         overlay.getScreenXY().set(0, ge.UNITS_FRACTION, 1, ge.UNITS_FRACTION);
+         overlay.getSize().set(width, ge.UNITS_PIXELS, height, ge.UNITS_PIXELS);
+         ge.getFeatures().appendChild(overlay);
+
+         return overlay;
+     }
+
+     var downActive, downInactive, upActive, upInactive, rightActive, rightInactive, leftActive, leftInactive;
+     var active, inactive;
       function initCB(instance) {
          
 		/* Basic initialization as per the Google Earth API documentation */
@@ -34,12 +53,29 @@
 		/* Magic from the firstpersoncam.js */
 		cam = new FirstPersonCam();
 		cam.updateCamera();
+
+        /* Setup Navigation Feedback */
+		downInactive = createIcon('http://stanford.edu/~tatianai/downnavi.png', 85, 600, 70, 70, true);
+		downActive = createIcon('http://stanford.edu/~tatianai/downnavi2.png', 85, 600, 70, 70, false);
+		upInactive = createIcon('http://stanford.edu/~tatianai/upnavi.png', 85, 480, 70, 70, true);
+		upActive = createIcon('http://stanford.edu/~tatianai/upnavi2.png', 85, 480, 70, 70, false);
+		rightInactive = createIcon('http://stanford.edu/~tatianai/rightnavi1.png', 135, 550, 70, 70, true);
+		rightActive = createIcon('http://stanford.edu/~tatianai/leftnavi2.png', 135, 550, 70, 70, false);
+		leftInactive = createIcon('http://stanford.edu/~tatianai/leftnavi.png', 20, 550, 70, 70, true);
+		leftActive = createIcon('http://stanford.edu/~tatianai/rightnavi2.png', 20, 550, 70, 70, false);
+
+		active = createIcon('http://stanford.edu/~tatianai/geoparty_dark.png', 50, 520, 120, 120, true);
+		inactive = createIcon('http://stanford.edu/~tatianai/geoparty_light.png', 50, 520, 120, 120, false);
       }
 
       function failureCB(errorCode) {		// TODO: compare to index.html's "instance"?
 		alert("Shit!");
-      }
-      google.setOnLoadCallback(init); // Calls specified once all HTML, requested APIs are loaded
+}
+
+google.setOnLoadCallback(init); // Calls specified once all HTML, requested APIs are loaded
+
+
+      
 
    </script>
 
@@ -49,6 +85,7 @@
 </head>
 <body onKeyDown="return keyDown(event);" onKeyUp="return keyUp(event);"> <!-- Triggers javascript in firstpersoncam.js controls -->
    <div id="map3d" style="height: 691px; width: 971px;"></div>
+   
 
 </body>
 </html>

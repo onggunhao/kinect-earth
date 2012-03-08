@@ -83,18 +83,26 @@ function keyDown(event) {
   } else if (event.keyCode == 37) {  // Turn Left.
     turnLeft = true;
     turn_speed = 1;
+    leftActive.setVisibility(true);
+    leftInactive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 188) {    // Turn left FAST
   	turnLeft = true;
   	turn_speed = 2.75;
+  	leftActive.setVisibility(true);
+  	leftInactive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 190) {    // Turn right FAST
   	turnRight = true;
   	turn_speed = 2.75;
+  	rightActive.setVisibility(true);
+  	rightInactive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 39) {  // Turn Right.
     turnRight = true;
     turn_speed = 1;
+    rightActive.setVisibility(true);
+    rightInactive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 38) {  // Tilt Up.
     tiltUp = true;
@@ -113,15 +121,21 @@ function keyDown(event) {
   } else if (event.keyCode == 87 || 
              event.keyCode == 119) {  // Move Forward.
     moveForward = true;
+    upActive.setVisibility(true);
+    upInactive.setVisibility(false);
     forward_speed = 1;
     event.returnValue = false;    
   } else if (event.keyCode == 50) {	  // Move Forward, faster
-  	moveForward = true;
+    moveForward = true;
+    upActive.setVisibility(true);
+    upInactive.setVisibility(false);
   	forward_speed = 3;
   	event.returnValue = false;
   } else if (event.keyCode == 83 || 
              event.keyCode == 115) {  // Move Backward
-    moveBackward = true;    
+    moveBackward = true;
+    downActive.setVisibility(true);
+    downInactive.setVisibility(false);
     event.returnValue = false;
   } else if (augmented_reality == false && event.keyCode == 89) {   // Y: Show augmented reality
   		var link = ge.createLink('');		// class ge inherited from index2.html
@@ -155,17 +169,25 @@ function keyUp(event) {
     event.returnValue = false;
   } else if (event.keyCode == 37) {  // Left.
     turnLeft = false;
+    leftInactive.setVisibility(true);
+    leftActive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 188) {    // Turn left FAST
-  	turnLeft = false;
+    turnLeft = false;
+    leftInactive.setVisibility(true);
+    leftActive.setVisibility(false);
   	turn_speed = 1;
     event.returnValue = false;
   } else if (event.keyCode == 190) {    // Turn right FAST
-  	turnRight = false;
+    turnRight = false;
+    rightInactive.setVisibility(true);
+    rightActive.setVisibility(false);
   	turn_speed = 1;
     event.returnValue = false;
   } else if (event.keyCode == 39) {  // Right.
     turnRight = false;
+    rightInactive.setVisibility(true);
+    rightActive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 38) {  // Up.
     tiltUp = false;
@@ -183,15 +205,21 @@ function keyUp(event) {
     event.returnValue = false;
   } else if (event.keyCode == 87 || 
              event.keyCode == 119) {  // Move Forward.
-    moveForward = false;    
+    moveForward = false;
+    upInactive.setVisibility(true);
+    upActive.setVisibility(false);
     event.returnValue = false;    
   } else if (event.keyCode == 50) {	  // Move Forward, faster
   	moveForward = false;
   	forward_speed = 1;
+  	upInactive.setVisibility(true);
+  	upActive.setVisibility(false);
   	event.returnValue = false;
   } else if (event.keyCode == 83 || 
              event.keyCode == 115) {  // Move Backward
-    moveBackward = false;  
+    moveBackward = false;
+    downInactive.setVisibility(true);
+    downActive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 89) {   // Y: Show augmented reality
   	ge.getFeatures().removeChild(networkLink);
