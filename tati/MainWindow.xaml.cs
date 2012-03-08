@@ -34,9 +34,10 @@ namespace SkeletalTracking
             //Browser.LoadCompleted += BrowserOnLoadCompleted;
 
             //Make sure to change this to your directory
-    //        Browser.Navigate(new Uri("C:/Users/Huyen Tran/cs247_prototype1/cs247-prototype/merged_stuff/index2.html"));
-            Browser.Navigate(new Uri("C:/Users/n00b/Downloads/cs247-prototype/merged_stuff/index2.html"));
-            
+          //  Browser.Navigate(new Uri("C:/Users/n00b/Downloads/cs247-prototype/merged_stuff/index2.html"));
+            Browser.Navigate(new Uri("C:/Users/n00b/Downloads/cs247-prototype/tati/index2.html"));
+            //Browser.Navigate(new Uri("C:/Users/Huyen Tran/Desktop/cs247-prototype/merged_stuff/index2.html"));
+           
             Keyboard.Focus(Browser);
         }
 
@@ -48,6 +49,11 @@ namespace SkeletalTracking
         CustomController yourController;
         HuyenController huyen;
         HyungguController hyunggu;
+        SuperController super;
+
+        //First User Skeleton Boolean
+        Boolean firstUserSkeletonDetected = false;
+        int userSkeletonID;
    
 
         //Holds the currently active controller
@@ -59,7 +65,7 @@ namespace SkeletalTracking
         public float k_xMaxJointScale = 1.5f;
         public float k_yMaxJointScale = 1.5f;
 
-        //int i;
+        int i;
 
         private void BrowserOnLoadCompleted(object sender, NavigationEventArgs navigationEventsArgs)
         {
@@ -73,9 +79,10 @@ namespace SkeletalTracking
             exampleController = new SkeletonController(this);
             huyen = new HuyenController(this);
             hyunggu = new HyungguController(this);
+            super = new SuperController(this);
             currentController = yourController;
             InitTargets();
-            //i = 0;
+            i = 0;
         }
         
         private void InitTargets()
@@ -208,31 +215,38 @@ namespace SkeletalTracking
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.D2)
+            /*if (e.Key == Key.D9)
             {
                 currentController = exampleController;
                 controllerText.Content = "Example Controller";
                 currentController.controllerActivated(targets);
-            }
+            }*/
 
-            if (e.Key == Key.D1)
+            if (e.Key == Key.D6)
             {
                 currentController = yourController;
                 controllerText.Content = "Your Controller";
                 currentController.controllerActivated(targets);
             }
 
-            if (e.Key == Key.D3)
+            if (e.Key == Key.D7)
             {
                 currentController = huyen;
                 controllerText.Content = "HUYEN CONTROLLER";
                 currentController.controllerActivated(targets);
             }
 
-            if (e.Key == Key.D4)
+            if (e.Key == Key.D8)
             {
                 currentController = hyunggu;
                 controllerText.Content = "HYUNGGU CONTROLLER";
+                currentController.controllerActivated(targets);
+            }
+
+            if (e.Key == Key.D9)
+            {
+                currentController = super;
+                controllerText.Content = "SUPER CONTROLLER";
                 currentController.controllerActivated(targets);
             }
 
