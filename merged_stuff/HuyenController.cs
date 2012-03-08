@@ -22,6 +22,7 @@ namespace SkeletalTracking
         public int menuCount = 0;
         public int selectCount = 0;
         double Thresh = 0.05;
+        double JetPackThresh = 0.08;
 
         public HuyenController(MainWindow win)
             : base(win)
@@ -32,6 +33,76 @@ namespace SkeletalTracking
         public override void processSkeletonFrame(SkeletonData skeleton, Dictionary<int, Target> targets)
         {
 
+            //detectPullMenu(skeleton, targets);
+            detectJetPackUp(skeleton, targets);
+
+            
+        }
+
+        public override void controllerActivated(Dictionary<int, Target> targets)
+        {
+           
+        }
+
+        private void detectJetPackUp(SkeletonData skeleton, Dictionary<int, Target> targets)
+        {
+            targets[4].setTargetSelected();
+
+            // right side
+            Point rightHandPosition, rightElbowPosition, rightShoulderPosition;
+            Joint rightHand = skeleton.Joints[JointID.HandRight];
+            rightHandPosition = new Point(rightHand.Position.X, rightHand.Position.Y);
+            Joint rightElbow = skeleton.Joints[JointID.ElbowRight];
+            rightElbowPosition = new Point(rightElbow.Position.X, rightElbow.Position.Y);
+            Joint rightShoulder = skeleton.Joints[JointID.ShoulderRight];
+            rightShoulderPosition = new Point(rightShoulder.Position.X, rightShoulder.Position.Y);
+
+            // left side
+            Point leftHandPosition, leftElbowPosition, leftShoulderPosition;
+            Joint leftHand = skeleton.Joints[JointID.HandLeft];
+            leftHandPosition = new Point(leftHand.Position.X, leftHand.Position.Y);
+            Joint leftElbow = skeleton.Joints[JointID.ElbowLeft];
+            leftElbowPosition = new Point(leftElbow.Position.X, leftElbow.Position.Y);
+            Joint leftShoulder = skeleton.Joints[JointID.ShoulderLeft];
+            leftShoulderPosition = new Point(leftShoulder.Position.X, leftShoulder.Position.Y);
+
+            // shoulder elbow x difference
+            // shoulder hand x difference
+            double rightShoulderElbowDiffX = Math.Abs(rightShoulderPosition.X - rightElbowPosition.X);
+            double rightShoulderHandDiffX= Math.Abs(rightShoulderPosition.X - rightHandPosition.X);
+
+            // elbow hand y difference
+            double rightElbowHandDiffY = Math.Abs(rightElbowPosition.Y - rightHandPosition.Y);
+
+            // left side differences
+            double leftShoulderElbowDiffX = Math.Abs(leftShoulderPosition.X - leftElbowPosition.X);
+            double leftShoulderHandDiffX = Math.Abs(leftShoulderPosition.X - leftHandPosition.X);
+
+            // elbow hand y difference
+            double leftElbowHandDiffY = Math.Abs(leftElbowPosition.Y - leftHandPosition.Y);
+
+            if (rightShoulderElbowDiffX < JetPackThresh
+                && rightShoulderHandDiffX < JetPackThresh
+                && rightElbowHandDiffY < JetPackThresh
+                && leftShoulderElbowDiffX < JetPackThresh
+                && leftShoulderHandDiffX < JetPackThresh
+                && leftElbowHandDiffY < JetPackThresh)
+            {
+                targets[5].setTargetSelected();
+                InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_U);
+            }
+            else
+            {
+                targets[5].setTargetUnselected();
+                InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_U);
+                InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_J);
+            }
+
+
+        }
+
+        private void detectPullMenu(SkeletonData skeleton, Dictionary<int, Target> targets)
+        {
             if (targets[4].isSelected())
             {
                 Joint rightHand = skeleton.Joints[JointID.HandRight].ScaleTo(640, 480, window.k_xMaxJointScale, window.k_yMaxJointScale);
@@ -104,10 +175,6 @@ namespace SkeletalTracking
                     else //gesture deviation, stop
                     {
                         targets[2].setTargetUnselected();
-                        //targets[4].setTargetUnselected();
-                        //targets[4].hideTarget();
-                        //targets[5].hideTarget();
-                        // reset the count
                         menuCount = 0;
                     }
                 }
@@ -124,33 +191,6 @@ namespace SkeletalTracking
                     }
                 }
             }
-        }
-
-        public override void controllerActivated(Dictionary<int, Target> targets)
-        {
-            /*
-            targets[1].setTargetUnselected();
-            targets[1].showTarget();
-            targets[1].setTargetPosition(262, 30);
-            targets[2].setTargetUnselected();
-            targets[2].showTarget();
-            targets[2].setTargetPosition(262, 150);
-            targets[3].setTargetUnselected();
-            targets[3].showTarget();
-            targets[3].setTargetPosition(262, 270);
-            targets[4].setTargetUnselected();
-            targets[4].hideTarget();
-            targets[4].setTargetPosition(400, 30);
-            targets[5].setTargetUnselected();
-            targets[5].hideTarget();
-            targets[5].setTargetPosition(400, 150);
-
-            // hide left-right directional targets
-            targets[6].setTargetUnselected();
-            targets[6].hideTarget();
-            targets[7].setTargetUnselected();
-            targets[7].hideTarget();
-             */
         }
     }
 }
