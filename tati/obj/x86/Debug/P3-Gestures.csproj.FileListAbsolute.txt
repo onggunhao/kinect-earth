@@ -1,0 +1,140 @@
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\obj\x86\Debug\SkeletalTracking.pdb
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\bin\Debug\SkeletalTracking.exe
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\bin\Debug\SkeletalTracking.pdb
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\obj\x86\Debug\MainWindow.baml
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\obj\x86\Debug\MainWindow.g.cs
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\obj\x86\Debug\App.g.cs
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\obj\x86\Debug\SkeletalTracking_MarkupCompile.cache
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\obj\x86\Debug\SkeletalTracking.g.resources
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\ElliotB\Desktop\KinectforWindowsSDKBeta2\5.Skeletal Tracking\SkeletalTracking\P3-Gestures\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\ElliotB\Desktop\P3-Gestures\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\ElliotB\Desktop\P3-Gestures\obj\x86\Debug\SkeletalTracking.pdb
+C:\Users\ElliotB\Desktop\P3-Gestures\bin\Debug\SkeletalTracking.exe
+C:\Users\ElliotB\Desktop\P3-Gestures\bin\Debug\SkeletalTracking.pdb
+C:\Users\ElliotB\Desktop\P3-Gestures\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\ElliotB\Desktop\P3-Gestures\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\ElliotB\Desktop\P3-Gestures\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\ElliotB\Desktop\P3-Gestures\obj\x86\Debug\MainWindow.baml
+C:\Users\ElliotB\Desktop\P3-Gestures\obj\x86\Debug\MainWindow.g.cs
+C:\Users\ElliotB\Desktop\P3-Gestures\obj\x86\Debug\App.g.cs
+C:\Users\ElliotB\Desktop\P3-Gestures\obj\x86\Debug\SkeletalTracking_MarkupCompile.cache
+C:\Users\ElliotB\Desktop\P3-Gestures\obj\x86\Debug\SkeletalTracking.g.resources
+C:\Users\ElliotB\Desktop\P3-Gestures\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
+C:\Users\ElliotB\Desktop\P3-Gestures\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\ElliotB\Desktop\P3-Gestures\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\obj\x86\Debug\SkeletalTracking.pdb
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\bin\Debug\SkeletalTracking.exe
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\bin\Debug\SkeletalTracking.pdb
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\obj\x86\Debug\MainWindow.baml
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\obj\x86\Debug\MainWindow.g.cs
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\obj\x86\Debug\App.g.cs
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\obj\x86\Debug\SkeletalTracking_MarkupCompile.cache
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\obj\x86\Debug\SkeletalTracking.g.resources
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\ElliotB\Downloads\ebabchick-P3-Gestures-133aa7d\ebabchick-P3-Gestures-133aa7d\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\obj\x86\Debug\SkeletalTracking.pdb
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\bin\Debug\SkeletalTracking.exe
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\bin\Debug\SkeletalTracking.pdb
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\obj\x86\Debug\MainWindow.baml
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\obj\x86\Debug\App.g.cs
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\obj\x86\Debug\SkeletalTracking_MarkupCompile.cache
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\obj\x86\Debug\SkeletalTracking.g.resources
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Huyen Tran\Downloads\247 downloads\p3\P3StarterCode\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\obj\x86\Debug\SkeletalTracking.pdb
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\bin\Debug\SkeletalTracking.exe
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\bin\Debug\SkeletalTracking.pdb
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\obj\x86\Debug\MainWindow.baml
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\obj\x86\Debug\MainWindow.g.cs
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\obj\x86\Debug\App.g.cs
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\obj\x86\Debug\SkeletalTracking_MarkupCompile.cache
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\obj\x86\Debug\SkeletalTracking.g.resources
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\n00b\Downloads\P3StarterCode2\P3StarterCode\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\obj\x86\Debug\SkeletalTracking.pdb
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\bin\Debug\SkeletalTracking.exe
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\bin\Debug\SkeletalTracking.pdb
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\obj\x86\Debug\MainWindow.baml
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\obj\x86\Debug\App.g.cs
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\obj\x86\Debug\SkeletalTracking_MarkupCompile.cache
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\obj\x86\Debug\SkeletalTracking.g.resources
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\gesture1contents\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\obj\x86\Debug\SkeletalTracking.pdb
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\bin\Debug\SkeletalTracking.exe
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\bin\Debug\SkeletalTracking.pdb
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\obj\x86\Debug\MainWindow.baml
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\obj\x86\Debug\App.g.cs
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\obj\x86\Debug\SkeletalTracking_MarkupCompile.cache
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\obj\x86\Debug\SkeletalTracking.g.resources
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Daniel\Documents\My Dropbox\2011-2012\Academics\Winter\CS247\P3\P3_code\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Huyen Tran\cs247_p3\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\Huyen Tran\cs247_p3\obj\x86\Debug\SkeletalTracking.pdb
+C:\Users\Huyen Tran\cs247_p3\bin\Debug\SkeletalTracking.exe
+C:\Users\Huyen Tran\cs247_p3\bin\Debug\SkeletalTracking.pdb
+C:\Users\Huyen Tran\cs247_p3\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Huyen Tran\cs247_p3\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\Huyen Tran\cs247_p3\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Huyen Tran\cs247_p3\obj\x86\Debug\MainWindow.baml
+C:\Users\Huyen Tran\cs247_p3\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Huyen Tran\cs247_p3\obj\x86\Debug\App.g.cs
+C:\Users\Huyen Tran\cs247_p3\obj\x86\Debug\SkeletalTracking_MarkupCompile.cache
+C:\Users\Huyen Tran\cs247_p3\obj\x86\Debug\SkeletalTracking.g.resources
+C:\Users\Huyen Tran\cs247_p3\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
+C:\Users\Huyen Tran\cs247_p3\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Huyen Tran\cs247_p3\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\gestures\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\gestures\obj\x86\Debug\SkeletalTracking.pdb
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.exe
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.pdb
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\bin\Debug\SkeletalTracking.exe
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\bin\Debug\SkeletalTracking.pdb
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\bin\Debug\InputSimulator.dll
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\bin\Debug\InputSimulator.pdb
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\bin\Debug\InputSimulator.xml
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\obj\x86\Debug\MainWindow.baml
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\obj\x86\Debug\App.g.cs
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking_MarkupCompile.cache
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.g.resources
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\obj\x86\Debug\SkeletalTracking.Properties.Resources.resources
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Huyen Tran\cs247_prototype1\cs247-prototype\merged_stuff\obj\x86\Debug\GenerateResource.write.1.tlog
