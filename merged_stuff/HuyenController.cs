@@ -96,6 +96,7 @@ namespace SkeletalTracking
                 targets[5].setTargetUnselected();
                 InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_U);
                 InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_J);
+
             }
 
 
