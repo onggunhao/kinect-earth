@@ -6,7 +6,7 @@
         <Rectangle Canvas.Left="0" Canvas.Top="892" Height="108" Name="rectangle1" Stroke="{x:Null}" Width="1680" Fill="#FFBFE0FF" />
         <!--  <WebBrowser x:Name="Browser" Height="731" Width="1011" Margin="12,12,120,-83" Canvas.Left="194" Canvas.Top="25">
         </WebBrowser> -->
-        <WebBrowser x:Name="Browser" Height="922.143" Width="1692" Canvas.Left="-12" Canvas.Top="-30" UseLayoutRounding="False" ClipToBounds="False" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <WebBrowser x:Name="Browser" Height="922.143" Width="1692" Canvas.Left="-12" Canvas.Top="-30" UseLayoutRounding="False" ClipToBounds="False" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.IsDeferredScrollingEnabled="False" ScrollViewer.CanContentScroll="False">
         </WebBrowser>
         <Image Opacity="0.9" Canvas.Left="1072" Canvas.Top="590" Height="70" Name="image1" Stretch="Fill" Width="75" />
         <Ellipse Canvas.Left="646" Canvas.Top="248" Height="50" Name="headEllipse" Stroke="Black" Width="50" Fill="Orange" />
