@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Closed="Window_Closed" Loaded="Window_Loaded" KeyDown="Window_KeyDown" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="1042" d:DesignWidth="1562" SizeToContent="WidthAndHeight">
     <Canvas Name="MainCanvas" Height="1000" Width="1680" FocusManager.FocusedElement="{Binding ElementName=Browser}">
-        <Rectangle Canvas.Left="-12" Canvas.Top="892" Height="105" Name="rectangle1" Stroke="Black" Width="1692" Fill="#FFBFE0FF" />
+        <Rectangle Canvas.Left="0" Canvas.Top="892" Height="108" Name="rectangle1" Stroke="{x:Null}" Width="1680" Fill="#FFBFE0FF" />
         <!--  <WebBrowser x:Name="Browser" Height="731" Width="1011" Margin="12,12,120,-83" Canvas.Left="194" Canvas.Top="25">
         </WebBrowser> -->
         <WebBrowser x:Name="Browser" Height="922.143" Width="1692" Canvas.Left="-12" Canvas.Top="-30" UseLayoutRounding="False" ClipToBounds="False" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -40,10 +40,10 @@
             </VisualBrush>
           </TextBlock.Background>
         </TextBlock>
-        <TextBlock Name="target2" Text="On"
-           Height="71"
-           Width="108"
-           Padding="27,10,0,0" Canvas.Left="1536" Canvas.Top="904" FontSize="40">
+        <TextBlock Name="target2" Text="Stop"
+           Height="72"
+           Width="124"
+           Padding="27,10,0,0" Canvas.Left="1544" Canvas.Top="907" FontSize="40" FontFamily="Calibri" TextAlignment="Left">
           <TextBlock.Background>
             <VisualBrush>
               <VisualBrush.Visual>
@@ -71,7 +71,7 @@
         <TextBlock Name="target4" Text="Label"
            Height="58"
            Width="167"
-           Padding="27,10,0,0" Canvas.Left="12" Canvas.Top="917" FontSize="32">
+           Padding="27,10,0,0" Canvas.Left="56" Canvas.Top="684" FontSize="32">
           <TextBlock.Background>
             <VisualBrush>
               <VisualBrush.Visual>
@@ -126,10 +126,11 @@
           </TextBlock.Background>
         </TextBlock>
 
-        <Label Canvas.Left="1115" Canvas.Top="917" Content="Current Controller:" Height="28" Name="label1" Width="108" />
-        <Label Canvas.Left="840" Canvas.Top="917" Content="Example Controller" Height="28" Name="controllerText" Width="140" />
+        <Label Canvas.Left="1056" Canvas.Top="800" Content="Current Controller:" Height="28" Name="label1" Width="108" />
+        <Label Canvas.Left="818" Canvas.Top="800" Content="Example Controller" Height="28" Name="controllerText" Width="140" />
         <TextBlock Canvas.Left="447" Canvas.Top="0" Height="17" Name="textBlock1" Text="(Use keyboard {1, 2} to change controllers)" Width="249" />
-        <Image Canvas.Left="507" Canvas.Top="893" Height="95" Name="image2" Stretch="Fill" Width="108" Source="/SkeletalTracking;component/Images/Penguins.jpg" />
+        <Image Canvas.Left="507" Canvas.Top="893" Height="83" Name="image2" Stretch="Fill" Width="268" Source="/SkeletalTracking;component/Images/golden_gate.jpg" />
+        <TextBox Canvas.Left="56" Canvas.Top="914" Height="62" Name="textBox1" Width="402" Text="Explore SF  !" FontFamily="Calibri" FontSize="40" />
     </Canvas>
 
 </Window>
