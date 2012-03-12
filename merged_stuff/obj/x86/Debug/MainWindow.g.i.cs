@@ -450,6 +450,12 @@ namespace SkeletalTracking {
             return;
             case 34:
             this.textBox1 = ((System.Windows.Controls.TextBox)(target));
+            
+            #line 133 "..\..\..\MainWindow.xaml"
+            this.textBox1.TextChanged += new System.Windows.Controls.TextChangedEventHandler(this.textBox1_TextChanged);
+            
+            #line default
+            #line hidden
             return;
             }
             this._contentLoaded = true;
