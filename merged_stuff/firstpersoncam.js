@@ -133,7 +133,8 @@ function keyDown(event) {
   	event.returnValue = false;
   } else if (event.keyCode == 83 || 
              event.keyCode == 115) {  // Move Backward
-    moveBackward = true;
+
+    moveBackward = true;
     downActive.setVisibility(true);
     downInactive.setVisibility(false);
     event.returnValue = false;
@@ -217,7 +218,8 @@ function keyUp(event) {
   	event.returnValue = false;
   } else if (event.keyCode == 83 || 
              event.keyCode == 115) {  // Move Backward
-    moveBackward = false;
+
+    moveBackward = false;
     downInactive.setVisibility(true);
     downActive.setVisibility(false);
     event.returnValue = false;
@@ -249,7 +251,7 @@ function FirstPersonCam() {
 
   // Heading, tilt angle is relative to local frame
   me.headingAngle = 0;
-  me.tiltAngle = 0;
+  me.tiltAngle = 10 * Math.PI / 180.0;
 
   // Initialize the time
   me.lastMillis = (new Date()).getTime();  
@@ -290,6 +292,7 @@ FirstPersonCam.prototype.updateOrientation = function(dt) {
     if (me.tiltAngle < tiltMin)
       me.tiltAngle = tiltMin;
   } 
+
 }
 
 FirstPersonCam.prototype.updatePosition = function(dt) {
@@ -329,23 +332,55 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
 		  forwardVelocity *= -1;      
 		forward = forwardVelocity * dt;
 	  }  
-	  if (altitudeUp) {
-		cameraAltitude += 1.0;
-	  } else if (altitudeDown) {
-		cameraAltitude -= 1.0;
-	  }
-	  cameraAltitude = Math.max(1.8, cameraAltitude);
+	  	if (altitudeUp) {
+			cameraAltitude += 1.0;
+		
+			// Handles tilt
+		  	target_angle = (-40.0 * Math.PI / 180.0) * (cameraAltitude / 500); 	// 500 is the height at which it tapers
+		 	if (me.tiltAngle != target_angle) {
+	  			angle_difference = me.tiltAngle - target_angle;						
+	  			me.tiltAngle = me.tiltAngle - angle_difference/10;
+	  	  	}
+	  	  	
+	  	} else if (altitudeDown) {
+			cameraAltitude -= 1.0;
+			tiltDownSpeed = 70.0;
+			
+			// Handles tilt
+			if (cameraAltitude > 30.0) {
+				me.tiltAngle = me.tiltAngle - tiltDownSpeed * dt * Math.PI / 180.0;
+				var tiltMinimum = -75.0 * Math.PI / 180.0;
+				if (me.tiltAngle < tiltMinimum) {
+					me.tiltAngle = tiltMinimum;
+				}
+			} else {
+				target_angle = 0;
+				if (me.tiltAngle != target_angle) {
+					angle_difference = me.tiltAngle - target_angle;						
+					me.tiltAngle = me.tiltAngle - angle_difference/10;
+				}		
+	  		}		
+	  		
+	  	} else {
+	  	
+	  		target_angle = (-30.0 * Math.PI / 180.0) * (cameraAltitude / 500);		// Negative number
+	  		if (me.tiltAngle != target_angle) {
+	  			angle_difference = me.tiltAngle - target_angle;						
+	  			me.tiltAngle = me.tiltAngle - angle_difference/10;
+	  		}
+	  	}
+	  	cameraAltitude = Math.max(1.8, cameraAltitude);
 	  
-	  me.distanceTraveled += forward;
+	  	me.distanceTraveled += forward;
 	
-	  // Add the change in position due to forward velocity and strafe velocity 
-	  me.localAnchorCartesian = V3.add(me.localAnchorCartesian, 
+	  	// Add the change in position due to forward velocity and strafe velocity 
+	  	me.localAnchorCartesian = V3.add(me.localAnchorCartesian, 
 									   V3.scale(rightVec, strafe));
-	  me.localAnchorCartesian = V3.add(me.localAnchorCartesian, 
+	  	me.localAnchorCartesian = V3.add(me.localAnchorCartesian, 
 									   V3.scale(headingVec, forward));
 																			
-	  // Convert cartesian to Lat Lon Altitude for camera setup later on.
-	  me.localAnchorLla = V3.cartesianToLatLonAlt(me.localAnchorCartesian);
+	  	// Convert cartesian to Lat Lon Altitude for camera setup later on.
+	  	me.localAnchorLla = V3.cartesianToLatLonAlt(me.localAnchorCartesian);
   	}
 }
 
