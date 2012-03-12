@@ -7,75 +7,78 @@
    <script type="text/javascript" src="firstpersoncam.js"></script>
    <script type="text/javascript" src="math3d.js"></script>
    <script type="text/javascript">
-      var ge;	  
-            
-      google.load("earth", "1");
+     var ge;
 
-      function init() {
-         google.earth.createInstance('map3d', initCB, failureCB);
+     google.load("earth", "1");
+
+     function init() {
+     google.earth.createInstance('map3d', initCB, failureCB);
      }
 
      function createIcon(href, x, y, width, height, visible) {
-         var icon = ge.createIcon('');
-         icon.setHref(href);
-         // Oscar peterson
-         var overlay = ge.createScreenOverlay('');
-         overlay.setDrawOrder(1 || 0);
-         overlay.setVisibility(visible || false);
-         overlay.setIcon(icon);
-         overlay.getOverlayXY().set(x, ge.UNITS_PIXELS, y, ge.UNITS_INSET_PIXELS);
-         overlay.getScreenXY().set(0, ge.UNITS_FRACTION, 1, ge.UNITS_FRACTION);
-         overlay.getSize().set(width, ge.UNITS_PIXELS, height, ge.UNITS_PIXELS);
-         ge.getFeatures().appendChild(overlay);
+     var icon = ge.createIcon('');
+     icon.setHref(href);
+     // Oscar peterson
+     var overlay = ge.createScreenOverlay('');
+     overlay.setDrawOrder(1 || 0);
+     overlay.setVisibility(visible || false);
+     overlay.setIcon(icon);
+     overlay.getOverlayXY().set(x, ge.UNITS_PIXELS, y, ge.UNITS_INSET_PIXELS);
+     overlay.getScreenXY().set(0, ge.UNITS_FRACTION, 1, ge.UNITS_FRACTION);
+     overlay.getSize().set(width, ge.UNITS_PIXELS, height, ge.UNITS_PIXELS);
+     ge.getFeatures().appendChild(overlay);
 
-         return overlay;
+     return overlay;
      }
 
      var downActive, downInactive, upActive, upInactive, rightActive, rightInactive, leftActive, leftInactive;
      var active, inactive;
-      function initCB(instance) {
-         
-		/* Basic initialization as per the Google Earth API documentation */
-		ge = instance;			// Specific instance of the Google Earth (you can have more than one)
-		ge.getWindow().setVisibility(true);
-		
-		// Directions layer
-		var link = ge.createLink('');		// class ge inherited from index2.html
-		var href = 'http://www.stanford.edu/~hyunggu/etc/cs247_arrow.kml';
-	  	link.setHref(href);
-	  	arrowLink = ge.createNetworkLink('');
-	  	arrowLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
-	  	ge.getFeatures().appendChild(arrowLink);
+     var jetpack;
+     function initCB(instance) {
 
-		ge.getOptions().setFlyToSpeed(50);
-		ge.getLayerRoot().enableLayerById(ge.LAYER_BUILDINGS, true);
-		 
-		/* Magic from the firstpersoncam.js */
-		cam = new FirstPersonCam();
-		cam.updateCamera();
+     /* Basic initialization as per the Google Earth API documentation */
+     ge = instance;			// Specific instance of the Google Earth (you can have more than one)
+     ge.getWindow().setVisibility(true);
 
-        /* Setup Navigation Feedback */
-		downInactive = createIcon('http://stanford.edu/~tatianai/downnavi.png', 79, 604, 70, 70, true);
-		downActive = createIcon('http://stanford.edu/~tatianai/downnavi2.png', 79, 604, 70, 70, false);
-		upInactive = createIcon('http://stanford.edu/~tatianai/upnavi.png', 80, 485, 70, 70, true);
-		upActive = createIcon('http://stanford.edu/~tatianai/upnavi2.png', 80, 485, 70, 70, false);
-		rightInactive = createIcon('http://stanford.edu/~tatianai/rightnavi1.png', 137, 545, 70, 70, true);
-		rightActive = createIcon('http://stanford.edu/~tatianai/leftnavi2.png', 137, 545, 70, 70, false);
-		leftInactive = createIcon('http://stanford.edu/~tatianai/leftnavi.png', 20, 545, 70, 70, true);
-		leftActive = createIcon('http://stanford.edu/~tatianai/rightnavi2.png', 20, 545, 70, 70, false);
+     // Directions layer
+     var link = ge.createLink('');		// class ge inherited from index2.html
+     var href = 'http://www.stanford.edu/~hyunggu/etc/cs247_arrow.kml';
+     link.setHref(href);
+     arrowLink = ge.createNetworkLink('');
+     arrowLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
+     ge.getFeatures().appendChild(arrowLink);
 
-		active = createIcon('http://stanford.edu/~tatianai/geoparty_dark.png', 55, 520, 120, 120, true);
-		inactive = createIcon('http://stanford.edu/~tatianai/geoparty_light.png', 55, 520, 120, 120, false);
-      }
+     ge.getOptions().setFlyToSpeed(50);
+     ge.getLayerRoot().enableLayerById(ge.LAYER_BUILDINGS, true);
 
-      function failureCB(errorCode) {		// TODO: compare to index.html's "instance"?
-		alert("Shit!");
-}
+     /* Magic from the firstpersoncam.js */
+     cam = new FirstPersonCam();
+     cam.updateCamera();
 
-google.setOnLoadCallback(init); // Calls specified once all HTML, requested APIs are loaded
+     /* Setup Navigation Feedback */
+     downInactive = createIcon('http://stanford.edu/~tatianai/downnavi.png', 129, 804, 70, 70, true);
+     downActive = createIcon('http://stanford.edu/~tatianai/downnavi2.png', 129, 804, 70, 70, false);
+     upInactive = createIcon('http://stanford.edu/~tatianai/upnavi.png', 130, 685, 70, 70, true);
+     upActive = createIcon('http://stanford.edu/~tatianai/upnavi2.png', 130, 685, 70, 70, false);
+     rightInactive = createIcon('http://stanford.edu/~tatianai/rightnavi1.png', 187, 745, 70, 70, true);
+     rightActive = createIcon('http://stanford.edu/~tatianai/leftnavi2.png', 187, 745, 70, 70, false);
+     leftInactive = createIcon('http://stanford.edu/~tatianai/leftnavi.png', 70, 745, 70, 70, true);
+     leftActive = createIcon('http://stanford.edu/~tatianai/rightnavi2.png', 70, 745, 70, 70, false);
+
+     active = createIcon('http://stanford.edu/~tatianai/geoparty_dark.png', 105, 720, 120, 120, true);
+     inactive = createIcon('http://stanford.edu/~tatianai/geoparty_light.png', 105, 720, 120, 120, false);
+
+     jetpack = createIcon('http://stanford.edu/~tatianai/jetpack.png', 1405, 720, 120, 120, false);
+     }
+
+     function failureCB(errorCode) {		// TODO: compare to index.html's "instance"?
+     alert("Shit!");
+     }
+
+     google.setOnLoadCallback(init); // Calls specified once all HTML, requested APIs are loaded
 
 
-      
+
 
    </script>
 

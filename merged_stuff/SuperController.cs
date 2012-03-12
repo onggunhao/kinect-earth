@@ -23,7 +23,7 @@ namespace SkeletalTracking
 
         Boolean AugmentedRealityOn = false;
         double THRESH = 0.3;
-        double JetPackThresh = 0.05;
+        double JetPackThresh = 0.1;
 
         public SuperController(MainWindow win)
             : base(win)
@@ -306,7 +306,7 @@ namespace SkeletalTracking
             {
                 targets[5].setTargetUnselected();
                 InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_U);
-                InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_J);
+                //InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_J);
             }
 
 

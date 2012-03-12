@@ -77,9 +77,11 @@ function keyDown(event) {
   if (event.keyCode == 85) {  // Altitude Up
     altitudeUp = true;
     event.returnValue = false;
+	jetpack.setVisibility(true);
   } else if (event.keyCode == 74) {  // Altitude Down
     altitudeDown = true;
     event.returnValue = false;
+	jetpack.setVisibility(false);
   } else if (event.keyCode == 37) {  // Turn Left.
     turnLeft = true;
     turn_speed = 1;
@@ -333,7 +335,7 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
 		forward = forwardVelocity * dt;
 	  }  
 	  	if (altitudeUp) {
-			cameraAltitude += Math.min(1.0, 1.0 * (cameraAltitude/15));
+			cameraAltitude += Math.min(0.5, 0.5 * (cameraAltitude/15));
 		
 			// Handles tilt
 		  	target_angle = (-40.0 * Math.PI / 180.0) * (cameraAltitude / 500); 	// 500 is the height at which it tapers
@@ -342,12 +344,13 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
 	  			me.tiltAngle = me.tiltAngle - angle_difference/10;
 	  	  	}
 	  	  	
-	  	} else if (altitudeDown) {
+	  	} else {
+			jetpack.setVisibility(false);
 			tiltDownSpeed = 70.0;
 			
 			// Handles tilt
 			if (cameraAltitude > 30.0) {
-				cameraAltitude -= 4.0;
+				cameraAltitude -= 1.0;
 				me.tiltAngle = me.tiltAngle - tiltDownSpeed * dt * Math.PI / 180.0;
 				var tiltMinimum = -75.0 * Math.PI / 180.0;
 				if (me.tiltAngle < tiltMinimum) {
