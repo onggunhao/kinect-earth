@@ -333,7 +333,7 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
 		forward = forwardVelocity * dt;
 	  }  
 	  	if (altitudeUp) {
-			cameraAltitude += 1.0;
+			cameraAltitude += Math.min(1.0, 1.0 * (cameraAltitude/15));
 		
 			// Handles tilt
 		  	target_angle = (-40.0 * Math.PI / 180.0) * (cameraAltitude / 500); 	// 500 is the height at which it tapers
@@ -343,17 +343,18 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
 	  	  	}
 	  	  	
 	  	} else if (altitudeDown) {
-			cameraAltitude -= 1.0;
 			tiltDownSpeed = 70.0;
 			
 			// Handles tilt
 			if (cameraAltitude > 30.0) {
+				cameraAltitude -= 4.0;
 				me.tiltAngle = me.tiltAngle - tiltDownSpeed * dt * Math.PI / 180.0;
 				var tiltMinimum = -75.0 * Math.PI / 180.0;
 				if (me.tiltAngle < tiltMinimum) {
 					me.tiltAngle = tiltMinimum;
 				}
 			} else {
+				cameraAltitude -= 0.5;
 				target_angle = 0;
 				if (me.tiltAngle != target_angle) {
 					angle_difference = me.tiltAngle - target_angle;						
@@ -361,7 +362,9 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
 				}		
 	  		}		
 	  		
-	  	} else {
+	  	} 
+	  	/*
+	  	else {
 	  	
 	  		target_angle = (-30.0 * Math.PI / 180.0) * (cameraAltitude / 500);		// Negative number
 	  		if (me.tiltAngle != target_angle) {
@@ -369,6 +372,7 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
 	  			me.tiltAngle = me.tiltAngle - angle_difference/10;
 	  		}
 	  	}
+	  	*/
 	  	cameraAltitude = Math.max(1.8, cameraAltitude);
 	  
 	  	me.distanceTraveled += forward;
