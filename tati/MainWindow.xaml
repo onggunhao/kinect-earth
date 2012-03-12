@@ -5,7 +5,7 @@
     <Canvas Name="MainCanvas" Height="800" Width="1247" FocusManager.FocusedElement="{Binding ElementName=Browser}">
       <!--  <WebBrowser x:Name="Browser" Height="731" Width="1011" Margin="12,12,120,-83" Canvas.Left="194" Canvas.Top="25">
         </WebBrowser> -->
-        <WebBrowser x:Name="Browser" Height="731" Width="1011" Margin="0,0,0,0" Canvas.Left="206" Canvas.Top="37">
+        <WebBrowser x:Name="Browser" Height="630" Width="988" Margin="0,0,0,0" Canvas.Left="206" Canvas.Top="37">
         </WebBrowser>
         <Image Opacity="0.9" Canvas.Left="33" Canvas.Top="603" Height="163" Name="image1" Stretch="Fill" Width="167" />
         <Ellipse Canvas.Left="646" Canvas.Top="248" Height="50" Name="headEllipse" Stroke="Black" Width="50" Fill="Orange" />
@@ -55,7 +55,7 @@
         </TextBlock>
         <TextBlock Name="target3" Text="3"
            Height="28"
-           Width="1247"
+           Width="1235"
            Canvas.Left="0" Canvas.Top="772"><TextBlock.Foreground><SolidColorBrush /></TextBlock.Foreground>
           <TextBlock.Background>
             <VisualBrush>
@@ -128,6 +128,7 @@
         <Label Canvas.Left="77" Canvas.Top="248" Content="Current Controller:" Height="28" Name="label1" Width="108" />
         <Label Canvas.Left="77" Canvas.Top="360" Content="Example Controller" Height="28" Name="controllerText" Width="140" />
         <TextBlock Canvas.Left="447" Canvas.Top="0" Height="17" Name="textBlock1" Text="(Use keyboard {1, 2} to change controllers)" Width="249" />
+        <Image Canvas.Left="166" Canvas.Top="654" Height="112" Name="image2" Stretch="Fill" Width="878" />
     </Canvas>
 
 </Window>
