@@ -315,7 +315,8 @@ FirstPersonCam.prototype.updatePosition = function(dt) {
   var strafe = 0; 
   
   	if (relocate_cam) {
-  	  me.localAnchorLla = [37.79333, -122.40, 0];  // San Francisco
+  	//  me.localAnchorLla = [37.79333, -122.40, 0];  // San Francisco
+	  me.localAnchorLla = [48.8583, 2.2945, 0];  // Paris
       me.localAnchorCartesian = V3.latLonAltToCartesian(me.localAnchorLla);
       me.headingAngle = 0;
       me.tiltAngle = 0;
