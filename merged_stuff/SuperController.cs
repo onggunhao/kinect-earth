@@ -19,11 +19,11 @@ namespace SkeletalTracking
 
         // Variables to keep "time"
         public int selectCount = 0;
-        int forwardCount = 0;
+        //int forwardCount = 0;
 
         Boolean AugmentedRealityOn = false;
         double THRESH = 0.3;
-        double JetPackThresh = 0.1;
+        double JetPackThresh = 0.06;
 
         public SuperController(MainWindow win)
             : base(win)
@@ -33,23 +33,28 @@ namespace SkeletalTracking
 
         public override void processSkeletonFrame(SkeletonData skeleton, Dictionary<int, Target> targets)
         {
+            // Get Skeleton Data
+            Joint head = skeleton.Joints[JointID.Head];
 
-            // Detect walking navigation.
-            detectWalking(skeleton, targets);
+            Joint rightShoulder = skeleton.Joints[JointID.ShoulderRight];
+            Joint leftShoulder = skeleton.Joints[JointID.ShoulderLeft];
 
-            // Detect arm turning navigation (Hyunggu 02/24/2012)
-            if (!detectArmTurning(skeleton, targets))
-            {
-                // Detect left-right shoulder turning navigation
-                if (!detectShoulderTurning(skeleton, targets))
-                {
-                    // Detect JetPackUP
-                    detectJetPackUp(skeleton, targets);
-                }
-            }
+            Joint rightHand = skeleton.Joints[JointID.HandRight];
+            Joint rightElbow = skeleton.Joints[JointID.ElbowRight];
+           
+            Joint leftHand = skeleton.Joints[JointID.HandLeft];
+            Joint leftElbow = skeleton.Joints[JointID.ElbowLeft];
 
-            // Detect Birdwatcher Gesture
-            detectBirdwatcher(skeleton, targets);
+            Joint rightFoot = skeleton.Joints[JointID.FootRight];
+            Joint leftFoot = skeleton.Joints[JointID.FootLeft];
+
+            Joint centerShoulder = skeleton.Joints[JointID.ShoulderCenter];
+
+            // Detect gestures
+            detectWalking(rightFoot, leftFoot);
+            //detectShoulderTurning(rightShoulder, leftShoulder);
+            detectJetPackUp(rightHand, rightElbow, rightShoulder, leftHand, leftElbow, leftShoulder);
+            //detectBirdwatcher(head, rightHand, rightElbow, rightShoulder);
         }
 
         public override void controllerActivated(Dictionary<int, Target> targets)
@@ -57,31 +62,15 @@ namespace SkeletalTracking
 
         }
 
-        private void detectWalking(SkeletonData skeleton, Dictionary<int, Target> targets) {
-            // Get right foot position
-            Point rightFootPosition;
-            Joint rightFoot = skeleton.Joints[JointID.FootRight];
-            rightFootPosition = new Point(rightFoot.Position.X, rightFoot.Position.Z);
-
-            // Get left foot position
-            Point leftFootPosition;
-            Joint leftFoot = skeleton.Joints[JointID.FootLeft];
-            leftFootPosition = new Point(leftFoot.Position.X, leftFoot.Position.Z);
-
-            double feetDifferential = leftFootPosition.Y - rightFootPosition.Y;
+        private void detectWalking(Joint rightFoot, Joint leftFoot) {
+          
+            double feetDifferential = leftFoot.Position.Z - rightFoot.Position.Z;
 
             // Move front
             if (feetDifferential > 0.1)
             {
-                // move forward slow (highlight 1 = middle)
-                targets[2].setTargetUnselected();
-                targets[3].setTargetUnselected();
-                targets[1].setTargetHighlighted();
-
                 if (feetDifferential > 0.5)
                 {
-                    // move forward fast (select 1)
-                    targets[1].setTargetSelected();
                     InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_2); // faster
                 }
                 else
@@ -93,222 +82,159 @@ namespace SkeletalTracking
             // Move backward
             else if (feetDifferential < -0.1)
             {
-                // move backward (select 3)
-                targets[1].setTargetUnselected();
-                targets[2].setTargetUnselected();
-                targets[3].setTargetSelected();
                 InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_S);
             }
             else
             {
-                // stay put (select 2)
-                targets[1].setTargetUnselected();
-                targets[3].setTargetUnselected();
-                targets[2].setTargetSelected();
-                InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_W);
-                InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_S);
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_W)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_W);
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_S)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_S);
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_2)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_2);
+                //InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_W);
+                //InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_S);
+                //InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_2);
             }
         }
 
-        private Boolean detectShoulderTurning(SkeletonData skeleton, Dictionary<int, Target> targets)
+        private Boolean detectShoulderTurning(Joint rightShoulder, Joint leftShoulder)
         {
-            // Gets right shoulder position
-            Joint rightShoulder = skeleton.Joints[JointID.ShoulderRight];
-            Point rightNav = new Point(rightShoulder.Position.X, rightShoulder.Position.Z);
+            double shoulderDepthDifferential = leftShoulder.Position.Z - rightShoulder.Position.Z;
 
-            Joint leftShoulder = skeleton.Joints[JointID.ShoulderLeft];
-            Point leftNav = new Point(leftShoulder.Position.X, leftShoulder.Position.Z);
-
-            double shoulderDifferential = leftNav.Y - rightNav.Y;
-
-            if (shoulderDifferential > 0.08)
+            if (shoulderDepthDifferential > 0.08)
             {
-                targets[6].setTargetHighlighted();
-                targets[7].setTargetUnselected();
-                InputSimulator.SimulateKeyDown(VirtualKeyCode.LEFT);
+                //targets[6].setTargetHighlighted();
+                //targets[7].setTargetUnselected();
+                if (shoulderDepthDifferential > 0.2)
+                {
+                    InputSimulator.SimulateKeyDown(VirtualKeyCode.OEM_COMMA);
+                }
+                else
+                {
+                    InputSimulator.SimulateKeyDown(VirtualKeyCode.LEFT);
+                }
                 return true;
             }
-            else if (shoulderDifferential < -0.08)
+            else if (shoulderDepthDifferential < -0.08)
             {
-                targets[6].setTargetUnselected();
-                targets[7].setTargetHighlighted();
-                InputSimulator.SimulateKeyDown(VirtualKeyCode.RIGHT);
+                //targets[6].setTargetUnselected();
+                //targets[7].setTargetHighlighted();
+                if (shoulderDepthDifferential < -0.2)
+                {
+                    InputSimulator.SimulateKeyDown(VirtualKeyCode.OEM_PERIOD);
+                }
+                else
+                {
+                    InputSimulator.SimulateKeyDown(VirtualKeyCode.RIGHT);
+                    
+                }
                 return true;
             }
             else
             {
-                targets[6].setTargetUnselected();
-                targets[7].setTargetUnselected();
-                InputSimulator.SimulateKeyUp(VirtualKeyCode.RIGHT);
-                InputSimulator.SimulateKeyUp(VirtualKeyCode.LEFT);
+                //targets[6].setTargetUnselected();
+                //targets[7].setTargetUnselected();
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.RIGHT)) InputSimulator.SimulateKeyUp(VirtualKeyCode.RIGHT);
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.LEFT)) InputSimulator.SimulateKeyUp(VirtualKeyCode.LEFT);
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.OEM_COMMA)) InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_COMMA);
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.OEM_PERIOD)) InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_PERIOD);
                 return false;
             }
         }
 
-        private Boolean detectArmTurning(SkeletonData skeleton, Dictionary<int, Target> targets)
+        private Boolean detectArmTurning(Joint shoulder, Joint rightHand, Joint rightElbow, Joint leftHand, Joint leftElbow)
         {
-            // Get right hand position
-            Joint HandRight = skeleton.Joints[JointID.HandRight];
-            Joint ElbowRight = skeleton.Joints[JointID.ElbowRight];
+          
+            double diffHandShoulderRight = Math.Abs(rightHand.Position.Y - shoulder.Position.Y);
 
-            Point HandRightPoint = new Point(HandRight.Position.X, HandRight.Position.Y);
-            Point ElbowRightPoint = new Point(ElbowRight.Position.X, ElbowRight.Position.Y);
-
-            // Get shoulder position
-            //Joint RightShoulder = skeleton.Joints[JointID.ShoulderRight];
-            //Point RightShoulderPoint = new Point(RightShoulder.Position.X, RightShoulder.Position.Y);
-
-            //Get shoulder center
-            Joint CenterShoulder = skeleton.Joints[JointID.ShoulderCenter];
-            Point CenterShoulderPoint = new Point(CenterShoulder.Position.X, CenterShoulder.Position.Y);
-
-            double diffHandShoulderRight = Math.Abs(HandRightPoint.Y - CenterShoulderPoint.Y);
-
-            // Gets left hand position
-            Joint HandLeft = skeleton.Joints[JointID.HandLeft];
-            Joint ElbowLeft = skeleton.Joints[JointID.ElbowLeft];
-
-            Point HandLeftPoint = new Point(HandLeft.Position.X, HandLeft.Position.Y);
-            Point ElbowLeftPoint = new Point(ElbowLeft.Position.X, ElbowLeft.Position.Y);
-
-            //Joint LeftShoulder = skeleton.Joints[JointID.ShoulderLeft];
-            //Point LeftShoulderPoint = new Point(LeftShoulder.Position.X, LeftShoulder.Position.Y);
-
-            double diffHandShoulderLeft = Math.Abs(HandLeftPoint.Y - CenterShoulderPoint.Y);
+            double diffHandShoulderLeft = Math.Abs(leftHand.Position.Y - shoulder.Position.Y);
 
             // right hand
-            if (diffHandShoulderRight < THRESH && HandRightPoint.X > ElbowRightPoint.X)
+            if (diffHandShoulderRight < THRESH && rightHand.Position.X > rightElbow.Position.X)
             {
-                targets[6].setTargetUnselected();
-                targets[7].setTargetSelected();
                 InputSimulator.SimulateKeyDown(VirtualKeyCode.OEM_PERIOD);
                 return true;
             }
             // left hand
-            else if (diffHandShoulderLeft < THRESH && HandLeftPoint.X < ElbowLeftPoint.X)
+            else if (diffHandShoulderLeft < THRESH && leftHand.Position.X < leftElbow.Position.X)
             {
-                targets[6].setTargetSelected();
-                targets[7].setTargetUnselected();
                 InputSimulator.SimulateKeyDown(VirtualKeyCode.OEM_COMMA);
                 return true;
             }
             // neither right nor left hand
             else
             {
-                targets[6].setTargetUnselected();
-                targets[7].setTargetUnselected();
-                InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_PERIOD);
-                InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_COMMA);
+                
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.OEM_PERIOD)) InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_PERIOD);
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.OEM_COMMA)) InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_COMMA);
                 return false;
             }
         }
 
-        private void detectBirdwatcher(SkeletonData skeleton, Dictionary<int, Target> targets)
+        private void detectBirdwatcher(Joint head, Joint rightHand, Joint rightElbow, Joint rightShoulder)
         {
-            // Get head position
-            Point headPosition;
-            Joint head = skeleton.Joints[JointID.Head];
-            headPosition = new Point(head.Position.X, head.Position.Y);
-
-            // Get right hand position
-            Point rightHandPosition;
-            Joint rightHand = skeleton.Joints[JointID.HandRight];
-            rightHandPosition = new Point(rightHand.Position.X, rightHand.Position.Y);
-
-            Point rightElbowPosition;
-            Joint rightElbow = skeleton.Joints[JointID.ElbowRight];
-            rightElbowPosition = new Point(rightElbow.Position.X, rightElbow.Position.Y);
-
-            // Get right shoulder position
-            Point rightShoulderPosition;
-            Joint rightShoulder = skeleton.Joints[JointID.ShoulderRight];
-            rightShoulderPosition = new Point(rightShoulder.Position.X, rightShoulder.Position.Y);
-
             //Calculate how far our right hand is from target 5 in both x and y directions
-            double deltaX = Math.Abs(rightHandPosition.X - headPosition.X);
-            double deltaY = Math.Abs(rightHandPosition.Y - headPosition.Y);
+            double deltaX = Math.Abs(rightHand.Position.X - head.Position.X);
+            double deltaY = Math.Abs(rightHand.Position.Y - head.Position.Y);
 
-            double headelbowXDifferential = rightElbowPosition.X - headPosition.X;
+            double headelbowXDifferential = rightElbow.Position.X - head.Position.X;
 
             // y increases towards top
             // hand > elbow > shoulder
 
             if (deltaY < 0.03
-                    && rightHandPosition.Y > rightElbowPosition.Y
-                    && rightElbowPosition.Y > rightShoulderPosition.Y
+                    && rightHand.Position.Y > rightElbow.Position.Y
+                    && rightElbow.Position.Y > rightShoulder.Position.Y
                     && deltaX < 0.3
                     && headelbowXDifferential > 0.2)
             {
                 // Birdwatcher! (highlight 4 and show 5)
                 InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_Y); // show augmented reality
-                AugmentedRealityOn = true;
-                targets[4].setTargetSelected();
+                //AugmentedRealityOn = true;
+          
             }
             else
             {
+                /*
                 if (AugmentedRealityOn)
                 {
                     InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_Y);
-                    targets[4].setTargetUnselected();
+ 
                     AugmentedRealityOn = false;
                 }
+                 */
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_Y)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_Y);
             }
         }
 
-        private void detectJetPackUp(SkeletonData skeleton, Dictionary<int, Target> targets)
+        private void detectJetPackUp(Joint rightHand, Joint rightElbow, Joint rightShoulder, 
+                                        Joint leftHand, Joint leftElbow, Joint leftShoulder)
         {
-            targets[4].setTargetSelected();
 
-            // right side
-            Point rightHandPosition, rightElbowPosition, rightShoulderPosition;
-            Joint rightHand = skeleton.Joints[JointID.HandRight];
-            rightHandPosition = new Point(rightHand.Position.X, rightHand.Position.Y);
-            Joint rightElbow = skeleton.Joints[JointID.ElbowRight];
-            rightElbowPosition = new Point(rightElbow.Position.X, rightElbow.Position.Y);
-            Joint rightShoulder = skeleton.Joints[JointID.ShoulderRight];
-            rightShoulderPosition = new Point(rightShoulder.Position.X, rightShoulder.Position.Y);
+            // right shoulder elbow x difference
+            double rightShoulderElbowDiffX = Math.Abs(rightShoulder.Position.X - rightElbow.Position.X);
 
-            // left side
-            Point leftHandPosition, leftElbowPosition, leftShoulderPosition;
-            Joint leftHand = skeleton.Joints[JointID.HandLeft];
-            leftHandPosition = new Point(leftHand.Position.X, leftHand.Position.Y);
-            Joint leftElbow = skeleton.Joints[JointID.ElbowLeft];
-            leftElbowPosition = new Point(leftElbow.Position.X, leftElbow.Position.Y);
-            Joint leftShoulder = skeleton.Joints[JointID.ShoulderLeft];
-            leftShoulderPosition = new Point(leftShoulder.Position.X, leftShoulder.Position.Y);
+            // right elbow hand y difference
+            double rightElbowHandDiffY = Math.Abs(rightElbow.Position.Y - rightHand.Position.Y);
 
-            // shoulder elbow x difference
-            // shoulder hand x difference
-            double rightShoulderElbowDiffX = Math.Abs(rightShoulderPosition.X - rightElbowPosition.X);
-            double rightShoulderHandDiffX = Math.Abs(rightShoulderPosition.X - rightHandPosition.X);
+            // left shoulder elbow x difference
+            double leftShoulderElbowDiffX = Math.Abs(leftShoulder.Position.X - leftElbow.Position.X);
 
-            // elbow hand y difference
-            double rightElbowHandDiffY = Math.Abs(rightElbowPosition.Y - rightHandPosition.Y);
-
-            // left side differences
-            double leftShoulderElbowDiffX = Math.Abs(leftShoulderPosition.X - leftElbowPosition.X);
-            double leftShoulderHandDiffX = Math.Abs(leftShoulderPosition.X - leftHandPosition.X);
-
-            // elbow hand y difference
-            double leftElbowHandDiffY = Math.Abs(leftElbowPosition.Y - leftHandPosition.Y);
+            // left elbow hand y difference
+            double leftElbowHandDiffY = Math.Abs(leftElbow.Position.Y - leftHand.Position.Y);
 
             if (rightShoulderElbowDiffX < JetPackThresh
-                && rightShoulderHandDiffX < JetPackThresh
-                && rightElbowHandDiffY < JetPackThresh
-                && leftShoulderElbowDiffX < JetPackThresh
-                && leftShoulderHandDiffX < JetPackThresh
-                && leftElbowHandDiffY < JetPackThresh)
+                && leftShoulderElbowDiffX < JetPackThresh)
             {
-                targets[5].setTargetSelected();
-                InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_U);
-            }
-            else
-            {
-                targets[5].setTargetUnselected();
-                InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_U);
-                //InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_J);
-            }
+                if (rightElbowHandDiffY < JetPackThresh
+                    && leftElbowHandDiffY < JetPackThresh) {
+                    if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_U)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_U);
+                    if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_J)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_J);
 
+                } else if (rightHand.Position.Y < rightElbow.Position.Y && leftHand.Position.Y < leftElbow.Position.Y) {
+                    InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_J);
+                } else {
+                    InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_U);
+                }
+            }
 
         }
     }

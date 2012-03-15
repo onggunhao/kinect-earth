@@ -34,8 +34,8 @@ namespace SkeletalTracking
             //Browser.LoadCompleted += BrowserOnLoadCompleted;
 
             //Make sure to change this to your directory
-            Browser.Navigate(new Uri("C:/Users/n00b/Downloads/cs247-prototype/merged_stuff/index2.html"));
-            //Browser.Navigate(new Uri("C:/Users/Huyen Tran/Desktop/cs247-prototype/merged_stuff/index2.html"));
+            //Browser.Navigate(new Uri("C:/Users/n00b/Downloads/cs247-prototype/merged_stuff/index2.html"));
+            Browser.Navigate(new Uri("C:/Users/Huyen Tran/Desktop/cs247-prototype/merged_stuff/index2.html"));
            
             Keyboard.Focus(Browser);
         }
@@ -79,7 +79,7 @@ namespace SkeletalTracking
             huyen = new HuyenController(this);
             hyunggu = new HyungguController(this);
             super = new SuperController(this);
-            currentController = yourController;
+            currentController = super;
             InitTargets();
             i = 0;
         }
@@ -214,13 +214,6 @@ namespace SkeletalTracking
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            /*if (e.Key == Key.D9)
-            {
-                currentController = exampleController;
-                controllerText.Content = "Example Controller";
-                currentController.controllerActivated(targets);
-            }*/
-
             if (e.Key == Key.D6)
             {
                 currentController = yourController;
