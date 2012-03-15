@@ -18,10 +18,8 @@ namespace SkeletalTracking
         private MainWindow window;
 
         // Variables to keep "time"
-        public int selectCount = 0;
-        //int forwardCount = 0;
+        //public int selectCount = 0;
 
-        Boolean AugmentedRealityOn = false;
         double THRESH = 0.3;
         double JetPackThresh = 0.06;
 
@@ -52,9 +50,9 @@ namespace SkeletalTracking
 
             // Detect gestures
             detectWalking(rightFoot, leftFoot);
-            //detectShoulderTurning(rightShoulder, leftShoulder);
+            detectShoulderTurning(rightShoulder, leftShoulder);
             detectJetPackUp(rightHand, rightElbow, rightShoulder, leftHand, leftElbow, leftShoulder);
-            //detectBirdwatcher(head, rightHand, rightElbow, rightShoulder);
+            detectBirdwatcher(head, rightHand, rightElbow, rightShoulder);
         }
 
         public override void controllerActivated(Dictionary<int, Target> targets)
@@ -89,9 +87,6 @@ namespace SkeletalTracking
                 if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_W)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_W);
                 if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_S)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_S);
                 if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_2)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_2);
-                //InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_W);
-                //InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_S);
-                //InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_2);
             }
         }
 
@@ -101,8 +96,6 @@ namespace SkeletalTracking
 
             if (shoulderDepthDifferential > 0.08)
             {
-                //targets[6].setTargetHighlighted();
-                //targets[7].setTargetUnselected();
                 if (shoulderDepthDifferential > 0.2)
                 {
                     InputSimulator.SimulateKeyDown(VirtualKeyCode.OEM_COMMA);
@@ -115,8 +108,6 @@ namespace SkeletalTracking
             }
             else if (shoulderDepthDifferential < -0.08)
             {
-                //targets[6].setTargetUnselected();
-                //targets[7].setTargetHighlighted();
                 if (shoulderDepthDifferential < -0.2)
                 {
                     InputSimulator.SimulateKeyDown(VirtualKeyCode.OEM_PERIOD);
@@ -130,8 +121,6 @@ namespace SkeletalTracking
             }
             else
             {
-                //targets[6].setTargetUnselected();
-                //targets[7].setTargetUnselected();
                 if (InputSimulator.IsKeyDown(VirtualKeyCode.RIGHT)) InputSimulator.SimulateKeyUp(VirtualKeyCode.RIGHT);
                 if (InputSimulator.IsKeyDown(VirtualKeyCode.LEFT)) InputSimulator.SimulateKeyUp(VirtualKeyCode.LEFT);
                 if (InputSimulator.IsKeyDown(VirtualKeyCode.OEM_COMMA)) InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_COMMA);
@@ -186,21 +175,11 @@ namespace SkeletalTracking
                     && deltaX < 0.3
                     && headelbowXDifferential > 0.2)
             {
-                // Birdwatcher! (highlight 4 and show 5)
+                // Birdwatcher!
                 InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_Y); // show augmented reality
-                //AugmentedRealityOn = true;
-          
             }
             else
             {
-                /*
-                if (AugmentedRealityOn)
-                {
-                    InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_Y);
- 
-                    AugmentedRealityOn = false;
-                }
-                 */
                 if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_Y)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_Y);
             }
         }
@@ -225,13 +204,15 @@ namespace SkeletalTracking
                 && leftShoulderElbowDiffX < JetPackThresh)
             {
                 if (rightElbowHandDiffY < JetPackThresh
-                    && leftElbowHandDiffY < JetPackThresh) {
+                    && leftElbowHandDiffY < JetPackThresh) { //hover
                     if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_U)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_U);
                     if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_J)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_J);
 
-                } else if (rightHand.Position.Y < rightElbow.Position.Y && leftHand.Position.Y < leftElbow.Position.Y) {
+                } else if (rightHand.Position.Y < rightElbow.Position.Y && leftHand.Position.Y < leftElbow.Position.Y) { //down
+                    if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_U)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_U);
                     InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_J);
-                } else {
+                } else { //up
+                    if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_J)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_J);
                     InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_U);
                 }
             }
