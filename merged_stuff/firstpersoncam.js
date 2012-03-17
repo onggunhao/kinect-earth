@@ -76,37 +76,37 @@ function keyDown(event) {
   if (!event) {
     event = window.event;
   }
-  if (event.keyCode == 85) {  // Altitude Up
+  if (event.keyCode == 85) {  // Key U: Altitude Up
     altitudeUp = true;
     event.returnValue = false;
 	jetpack.setVisibility(true);
-  } else if (event.keyCode == 74) {  // Altitude Down
+  } else if (event.keyCode == 74) {  // Key J: Altitude Down
     altitudeDown = true;
     event.returnValue = false;
 	jetpack.setVisibility(false);
-  } else if (event.keyCode == 37) {  // Turn Left.
+  } else if (event.keyCode == 37) {  // Key Left Arrow: Turn Left.
     turnLeft = true;
     turn_speed = 1;
-    leftActive.setVisibility(true);
-    leftInactive.setVisibility(false);
+    //leftActive.setVisibility(true);
+    //leftInactive.setVisibility(false);
     event.returnValue = false;
-  } else if (event.keyCode == 188) {    // Turn left FAST
+  } else if (event.keyCode == 188) {    // Key Comma: Turn left FAST
   	turnLeft = true;
   	turn_speed = 2.75;
-  	leftActive.setVisibility(true);
-  	leftInactive.setVisibility(false);
+  	//leftActive.setVisibility(true);
+  	//leftInactive.setVisibility(false);
     event.returnValue = false;
-  } else if (event.keyCode == 190) {    // Turn right FAST
+  } else if (event.keyCode == 190) {    // Key Period: Turn right FAST
   	turnRight = true;
   	turn_speed = 2.75;
-  	rightActive.setVisibility(true);
-  	rightInactive.setVisibility(false);
+  	//rightActive.setVisibility(true);
+  	//rightInactive.setVisibility(false);
     event.returnValue = false;
-  } else if (event.keyCode == 39) {  // Turn Right.
+  } else if (event.keyCode == 39) {  // Key Right Arrow: Turn Right.
     turnRight = true;
     turn_speed = 1;
-    rightActive.setVisibility(true);
-    rightInactive.setVisibility(false);
+    //rightActive.setVisibility(true);
+    //rightInactive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 38) {  // Tilt Up.
     tiltUp = true;
@@ -123,20 +123,20 @@ function keyDown(event) {
     strafeRight = true;
     event.returnValue = false;
   } else if (event.keyCode == 87 || 
-             event.keyCode == 119) {  // Move Forward.
+             event.keyCode == 119) {  // Key W: Move Forward.
     moveForward = true;
     upActive.setVisibility(true);
     upInactive.setVisibility(false);
     forward_speed = 1;
     event.returnValue = false;    
-  } else if (event.keyCode == 50) {	  // Move Forward, faster
+  } else if (event.keyCode == 50) {	  // Key 2: Move Forward, faster
     moveForward = true;
     upActive.setVisibility(true);
     upInactive.setVisibility(false);
   	forward_speed = 3;
   	event.returnValue = false;
   } else if (event.keyCode == 83 || 
-             event.keyCode == 115) {  // Move Backward
+             event.keyCode == 115) {  // Key S: Move Backward
 
     moveBackward = true;
     downActive.setVisibility(true);
@@ -175,25 +175,25 @@ function keyUp(event) {
     event.returnValue = false;
   } else if (event.keyCode == 37) {  // Left.
     turnLeft = false;
-    leftInactive.setVisibility(true);
-    leftActive.setVisibility(false);
+    //leftInactive.setVisibility(true);
+    //leftActive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 188) {    // Turn left FAST
     turnLeft = false;
-    leftInactive.setVisibility(true);
-    leftActive.setVisibility(false);
+    //leftInactive.setVisibility(true);
+    //leftActive.setVisibility(false);
   	turn_speed = 1;
     event.returnValue = false;
   } else if (event.keyCode == 190) {    // Turn right FAST
     turnRight = false;
-    rightInactive.setVisibility(true);
-    rightActive.setVisibility(false);
+    //rightInactive.setVisibility(true);
+    //rightActive.setVisibility(false);
   	turn_speed = 1;
     event.returnValue = false;
   } else if (event.keyCode == 39) {  // Right.
     turnRight = false;
-    rightInactive.setVisibility(true);
-    rightActive.setVisibility(false);
+    //rightInactive.setVisibility(true);
+    //rightActive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 38) {  // Up.
     tiltUp = false;

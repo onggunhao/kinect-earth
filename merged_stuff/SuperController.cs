@@ -17,9 +17,6 @@ namespace SkeletalTracking
     {
         private MainWindow window;
 
-        // Variables to keep "time"
-        //public int selectCount = 0;
-
         double THRESH = 0.3;
         double JetPackThresh = 0.06;
 
