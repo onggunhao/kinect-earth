@@ -154,7 +154,9 @@ function keyDown(event) {
   } else if (event.keyCode == 48) {   // Key 0: relocate to SF
   	relocate_sf = true;
   	event.returnValue = false;
-  } else if (event.keyCode == 57) {    // Key 9: relocate to Paris    relocate_paris = true;    event.returnValue = false;
+  } else if (event.keyCode == 57) {    // Key 9: relocate to Paris
+    relocate_paris = true;
+    event.returnValue = false;
   } else {
     return true;
   }
@@ -234,7 +236,10 @@ function keyUp(event) {
   	event.returnValue = false;
   } else if (event.keyCode == 48) {   // Key 0: relocate to SF
   	relocate_sf = false;
-  	event.returnValue = false;  } else if (event.keyCode == 57) {   // Key 9: relocate to Paris    relocate_paris = false;    event.returnValue = false;
+  	event.returnValue = false;
+  } else if (event.keyCode == 57) {   // Key 9: relocate to Paris
+    relocate_paris = false;
+    event.returnValue = false;
     } 
   return false;
 }
@@ -352,7 +357,7 @@ FirstPersonCam.prototype.updatePosition = function (dt) {
                 me.tiltAngle = me.tiltAngle - angle_difference / 10;
             }
 
-        } else {
+        } else if (altitudeDown) {
             jetpack.setVisibility(false);
             tiltDownSpeed = 70.0;
 
@@ -372,8 +377,16 @@ FirstPersonCam.prototype.updatePosition = function (dt) {
                     me.tiltAngle = me.tiltAngle - angle_difference / 10;
                 }
             }
-
-        }
+		} else {
+			//if (cameraAltitude < 30.0) target_angle = 0;
+			//else target_angle = (-40.0 * Math.PI / 180.0) * (cameraAltitude / 500);
+			
+			target_angle = (-70.0 * Math.PI / 180.0) * (cameraAltitude / 500);
+            if (me.tiltAngle != target_angle) {
+                angle_difference = me.tiltAngle - target_angle;
+            	me.tiltAngle = me.tiltAngle - angle_difference / 10;
+            }
+		}
         /*
         else {
 	  	
