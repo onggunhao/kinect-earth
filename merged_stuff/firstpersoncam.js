@@ -26,6 +26,8 @@ limitations under the License.
 // Global Variables
 //----------------------------------------------------------------------------
 
+soundSwitch = false;
+
 turnLeft = false;
 turnRight = false;
 tiltUp = false;
@@ -77,36 +79,38 @@ function keyDown(event) {
     event = window.event;
   }
   if (event.keyCode == 85) {  // Key U: Altitude Up
+    playSound(true);
     altitudeUp = true;
     event.returnValue = false;
 	jetpack.setVisibility(true);
   } else if (event.keyCode == 74) {  // Key J: Altitude Down
+    playSound(false);
     altitudeDown = true;
     event.returnValue = false;
 	jetpack.setVisibility(false);
   } else if (event.keyCode == 37) {  // Key Left Arrow: Turn Left.
     turnLeft = true;
     turn_speed = 1;
-    //leftActive.setVisibility(true);
-    //leftInactive.setVisibility(false);
+    leftActive.setVisibility(true);
+    leftInactive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 188) {    // Key Comma: Turn left FAST
   	turnLeft = true;
   	turn_speed = 2.75;
-  	//leftActive.setVisibility(true);
-  	//leftInactive.setVisibility(false);
+  	leftActive.setVisibility(true);
+  	leftInactive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 190) {    // Key Period: Turn right FAST
   	turnRight = true;
   	turn_speed = 2.75;
-  	//rightActive.setVisibility(true);
-  	//rightInactive.setVisibility(false);
+  	rightActive.setVisibility(true);
+  	rightInactive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 39) {  // Key Right Arrow: Turn Right.
     turnRight = true;
     turn_speed = 1;
-    //rightActive.setVisibility(true);
-    //rightInactive.setVisibility(false);
+    rightActive.setVisibility(true);
+    rightInactive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 38) {  // Tilt Up.
     tiltUp = true;
@@ -177,25 +181,25 @@ function keyUp(event) {
     event.returnValue = false;
   } else if (event.keyCode == 37) {  // Left.
     turnLeft = false;
-    //leftInactive.setVisibility(true);
-    //leftActive.setVisibility(false);
+    leftInactive.setVisibility(true);
+    leftActive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 188) {    // Turn left FAST
     turnLeft = false;
-    //leftInactive.setVisibility(true);
-    //leftActive.setVisibility(false);
+    leftInactive.setVisibility(true);
+    leftActive.setVisibility(false);
   	turn_speed = 1;
     event.returnValue = false;
   } else if (event.keyCode == 190) {    // Turn right FAST
     turnRight = false;
-    //rightInactive.setVisibility(true);
-    //rightActive.setVisibility(false);
+    rightInactive.setVisibility(true);
+    rightActive.setVisibility(false);
   	turn_speed = 1;
     event.returnValue = false;
   } else if (event.keyCode == 39) {  // Right.
     turnRight = false;
-    //rightInactive.setVisibility(true);
-    //rightActive.setVisibility(false);
+    rightInactive.setVisibility(true);
+    rightActive.setVisibility(false);
     event.returnValue = false;
   } else if (event.keyCode == 38) {  // Up.
     tiltUp = false;
@@ -458,4 +462,13 @@ FirstPersonCam.prototype.update = function() {
            
   // Update camera
   me.updateCamera();
+};
+
+function playSound(soundSwitch)	{
+	if (soundSwitch) 	{
+		jpsound.src="http://www.stanford.edu/~hyunggu/etc/cs247/jetpack.mp3";
+	}
+	else	{
+		jpsound.src="";
+	}
 };
