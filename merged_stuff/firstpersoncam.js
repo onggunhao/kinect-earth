@@ -41,7 +41,9 @@ altitudeDown = false;
 forward_speed = 1;
 turn_speed = 1;
 augmented_reality = false;
-relocate_cam = false;
+//relocate_cam = false;
+relocate_sf = false;
+relocate_paris = false;
 
 /* Augmented reality variables */
 var networkLink = null;
@@ -149,9 +151,10 @@ function keyDown(event) {
 	  	ge.getFeatures().appendChild(networkLink);
 		augmented_reality = true;
   		event.returnValue = false;
-  } else if (event.keyCode == 48) {   // Key 0: relocate
-  	relocate_cam = true;
+  } else if (event.keyCode == 48) {   // Key 0: relocate to SF
+  	relocate_sf = true;
   	event.returnValue = false;
+  } else if (event.keyCode == 57) {    // Key 9: relocate to Paris    relocate_paris = true;    event.returnValue = false;
   } else {
     return true;
   }
@@ -229,10 +232,10 @@ function keyUp(event) {
   	ge.getFeatures().removeChild(networkLink);
   	augmented_reality = false;
   	event.returnValue = false;
-  } else if (event.keyCode == 48) {   // Key 0: relocate
-  	relocate_cam = false;
-  	event.returnValue = false;
-  } 
+  } else if (event.keyCode == 48) {   // Key 0: relocate to SF
+  	relocate_sf = false;
+  	event.returnValue = false;  } else if (event.keyCode == 57) {   // Key 9: relocate to Paris    relocate_paris = false;    event.returnValue = false;
+    } 
   return false;
 }
 
@@ -297,99 +300,103 @@ FirstPersonCam.prototype.updateOrientation = function(dt) {
 
 }
 
-FirstPersonCam.prototype.updatePosition = function(dt) {
-  var me = this;
-  
-  // Convert local lat/lon to a global matrix. The up vector is 
-  // vector = position - center of earth. And the right vector is a vector
-  // pointing eastwards and the facing vector is pointing towards north.
-  var localToGlobalFrame = M33.makeLocalToGlobalFrame(me.localAnchorLla); 
-  
-  // Move in heading direction by rotating the facing vector around
-  // the up vector, in the angle specified by the heading angle.
-  // Strafing is similar, except it's aligned towards the right vec.
-  var headingVec = V3.rotate(localToGlobalFrame[1], localToGlobalFrame[2],
-                             -me.headingAngle);                             
-  var rightVec = V3.rotate(localToGlobalFrame[0], localToGlobalFrame[2],
+FirstPersonCam.prototype.updatePosition = function (dt) {
+    var me = this;
+
+    // Convert local lat/lon to a global matrix. The up vector is 
+    // vector = position - center of earth. And the right vector is a vector
+    // pointing eastwards and the facing vector is pointing towards north.
+    var localToGlobalFrame = M33.makeLocalToGlobalFrame(me.localAnchorLla);
+
+    // Move in heading direction by rotating the facing vector around
+    // the up vector, in the angle specified by the heading angle.
+    // Strafing is similar, except it's aligned towards the right vec.
+    var headingVec = V3.rotate(localToGlobalFrame[1], localToGlobalFrame[2],
                              -me.headingAngle);
-  var strafe = 0; 
-  
-  	if (relocate_cam) {
-  	//  me.localAnchorLla = [37.79333, -122.40, 0];  // San Francisco
-	  me.localAnchorLla = [48.8583, 2.2945, 0];  // Paris
-      me.localAnchorCartesian = V3.latLonAltToCartesian(me.localAnchorLla);
-      me.headingAngle = 0;
-      me.tiltAngle = 0;
-  	} else {
-	  // Calculate strafe/forwards  
-	  if (strafeLeft || strafeRight) {
-		var strafeVelocity = 20;
-		if (strafeLeft)
-		  strafeVelocity *= -1;      
-		strafe = strafeVelocity * dt;
-	  }  
-	  var forward = 0;                             
-	  if (moveForward || moveBackward) {
-		var forwardVelocity = 15 * forward_speed;
-		if (moveBackward)
-		  forwardVelocity *= -1;      
-		forward = forwardVelocity * dt;
-	  }  
-	  	if (altitudeUp) {
-			cameraAltitude += Math.min(0.5, 0.5 * (cameraAltitude/15));
-		
-			// Handles tilt
-		  	target_angle = (-40.0 * Math.PI / 180.0) * (cameraAltitude / 500); 	// 500 is the height at which it tapers
-		 	if (me.tiltAngle != target_angle) {
-	  			angle_difference = me.tiltAngle - target_angle;						
-	  			me.tiltAngle = me.tiltAngle - angle_difference/10;
-	  	  	}
-	  	  	
-	  	} else {
-			jetpack.setVisibility(false);
-			tiltDownSpeed = 70.0;
-			
-			// Handles tilt
-			if (cameraAltitude > 30.0) {
-				cameraAltitude -= 1.0;
-				me.tiltAngle = me.tiltAngle - tiltDownSpeed * dt * Math.PI / 180.0;
-				var tiltMinimum = -75.0 * Math.PI / 180.0;
-				if (me.tiltAngle < tiltMinimum) {
-					me.tiltAngle = tiltMinimum;
-				}
-			} else {
-				cameraAltitude -= 0.5;
-				target_angle = 0;
-				if (me.tiltAngle != target_angle) {
-					angle_difference = me.tiltAngle - target_angle;						
-					me.tiltAngle = me.tiltAngle - angle_difference/10;
-				}		
-	  		}		
-	  		
-	  	} 
-	  	/*
-	  	else {
+    var rightVec = V3.rotate(localToGlobalFrame[0], localToGlobalFrame[2],
+                             -me.headingAngle);
+    var strafe = 0;
+
+    if (relocate_sf) {
+        me.localAnchorLla = [37.79333, -122.40, 0];  // San Francisco
+        me.localAnchorCartesian = V3.latLonAltToCartesian(me.localAnchorLla);
+        me.headingAngle = 0;
+        me.tiltAngle = 0;
+    } else if (relocate_paris) {
+        me.localAnchorLla = [48.8583, 2.2945, 0];  // Paris
+        me.localAnchorCartesian = V3.latLonAltToCartesian(me.localAnchorLla);
+        me.headingAngle = 0;
+        me.tiltAngle = 0;
+    } else {
+        // Calculate strafe/forwards  
+        if (strafeLeft || strafeRight) {
+            var strafeVelocity = 20;
+            if (strafeLeft)
+                strafeVelocity *= -1;
+            strafe = strafeVelocity * dt;
+        }
+        var forward = 0;
+        if (moveForward || moveBackward) {
+            var forwardVelocity = 15 * forward_speed;
+            if (moveBackward)
+                forwardVelocity *= -1;
+            forward = forwardVelocity * dt;
+        }
+        if (altitudeUp) {
+            cameraAltitude += Math.min(0.5, 0.5 * (cameraAltitude / 15));
+
+            // Handles tilt
+            target_angle = (-40.0 * Math.PI / 180.0) * (cameraAltitude / 500); 	// 500 is the height at which it tapers
+            if (me.tiltAngle != target_angle) {
+                angle_difference = me.tiltAngle - target_angle;
+                me.tiltAngle = me.tiltAngle - angle_difference / 10;
+            }
+
+        } else {
+            jetpack.setVisibility(false);
+            tiltDownSpeed = 70.0;
+
+            // Handles tilt
+            if (cameraAltitude > 30.0) {
+                cameraAltitude -= 1.0;
+                me.tiltAngle = me.tiltAngle - tiltDownSpeed * dt * Math.PI / 180.0;
+                var tiltMinimum = -75.0 * Math.PI / 180.0;
+                if (me.tiltAngle < tiltMinimum) {
+                    me.tiltAngle = tiltMinimum;
+                }
+            } else {
+                cameraAltitude -= 0.5;
+                target_angle = 0;
+                if (me.tiltAngle != target_angle) {
+                    angle_difference = me.tiltAngle - target_angle;
+                    me.tiltAngle = me.tiltAngle - angle_difference / 10;
+                }
+            }
+
+        }
+        /*
+        else {
 	  	
-	  		target_angle = (-30.0 * Math.PI / 180.0) * (cameraAltitude / 500);		// Negative number
-	  		if (me.tiltAngle != target_angle) {
-	  			angle_difference = me.tiltAngle - target_angle;						
-	  			me.tiltAngle = me.tiltAngle - angle_difference/10;
-	  		}
-	  	}
-	  	*/
-	  	cameraAltitude = Math.max(1.8, cameraAltitude);
-	  
-	  	me.distanceTraveled += forward;
-	
-	  	// Add the change in position due to forward velocity and strafe velocity 
-	  	me.localAnchorCartesian = V3.add(me.localAnchorCartesian, 
+        target_angle = (-30.0 * Math.PI / 180.0) * (cameraAltitude / 500);		// Negative number
+        if (me.tiltAngle != target_angle) {
+        angle_difference = me.tiltAngle - target_angle;						
+        me.tiltAngle = me.tiltAngle - angle_difference/10;
+        }
+        }
+        */
+        cameraAltitude = Math.max(1.8, cameraAltitude);
+
+        me.distanceTraveled += forward;
+
+        // Add the change in position due to forward velocity and strafe velocity 
+        me.localAnchorCartesian = V3.add(me.localAnchorCartesian,
 									   V3.scale(rightVec, strafe));
-	  	me.localAnchorCartesian = V3.add(me.localAnchorCartesian, 
+        me.localAnchorCartesian = V3.add(me.localAnchorCartesian,
 									   V3.scale(headingVec, forward));
-																			
-	  	// Convert cartesian to Lat Lon Altitude for camera setup later on.
-	  	me.localAnchorLla = V3.cartesianToLatLonAlt(me.localAnchorCartesian);
-  	}
+
+        // Convert cartesian to Lat Lon Altitude for camera setup later on.
+        me.localAnchorLla = V3.cartesianToLatLonAlt(me.localAnchorCartesian);
+    }
 }
 
 FirstPersonCam.prototype.updateCamera = function() {

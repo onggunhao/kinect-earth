@@ -214,6 +214,13 @@ namespace SkeletalTracking
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.D1)
+            {
+                currentController = super;
+                controllerText.Content = "SUPER CONTROLLER";
+                currentController.controllerActivated(targets);
+            }
+
             if (e.Key == Key.D6)
             {
                 currentController = yourController;
@@ -234,14 +241,6 @@ namespace SkeletalTracking
                 controllerText.Content = "HYUNGGU CONTROLLER";
                 currentController.controllerActivated(targets);
             }
-
-            if (e.Key == Key.D9)
-            {
-                currentController = super;
-                controllerText.Content = "SUPER CONTROLLER";
-                currentController.controllerActivated(targets);
-            }
-
         }
     }
 
