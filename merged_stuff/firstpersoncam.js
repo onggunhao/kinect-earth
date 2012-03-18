@@ -149,7 +149,8 @@ function keyDown(event) {
     event.returnValue = false;
   } else if (augmented_reality == false && event.keyCode == 89) {   // Y: Show augmented reality
   		var link = ge.createLink('');		// class ge inherited from index2.html
-		var href = 'http://www.stanford.edu/~hyunggu/etc/cs247_twit2.kml';
+		//var href = 'http://www.stanford.edu/~hyunggu/etc/cs247_twit2.kml';
+		var href = 'http://cs247.eidus.org/tweets.kml';
 	  	link.setHref(href);
 	  	networkLink = ge.createNetworkLink('');
 	  	networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
@@ -347,7 +348,7 @@ FirstPersonCam.prototype.updatePosition = function (dt) {
         }
         var forward = 0;
         if (moveForward || moveBackward) {
-            var forwardVelocity = 15 * forward_speed;
+            var forwardVelocity = 15 * forward_speed * (1 + 20*(cameraAltitude/500));
             if (moveBackward)
                 forwardVelocity *= -1;
             forward = forwardVelocity * dt;
