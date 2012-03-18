@@ -201,6 +201,21 @@ namespace SkeletalTracking
 
             if (e.Key == Key.D6)
             {
+                bannerSF.Visibility = Visibility.Hidden;
+                bannerParis.Visibility = Visibility.Visible;
+                //InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_9);
+            }
+
+            if (e.Key == Key.D7)
+            {
+                bannerSF.Visibility = Visibility.Visible;
+                bannerParis.Visibility = Visibility.Hidden;
+                //InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_0);
+            }
+
+            /*
+            if (e.Key == Key.D6)
+            {
                 currentController = yourController;
                 controllerText.Content = "Your Controller";
                 currentController.controllerActivated(targets);
@@ -219,6 +234,7 @@ namespace SkeletalTracking
                 controllerText.Content = "HYUNGGU CONTROLLER";
                 currentController.controllerActivated(targets);
             }
+             */
         }
     }
 

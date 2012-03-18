@@ -99,7 +99,7 @@ namespace SkeletalTracking
                 }
                 else
                 {
-                    InputSimulator.SimulateKeyDown(VirtualKeyCode.LEFT);
+                    InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_K);
                 }
                 return true;
             }
@@ -111,15 +111,15 @@ namespace SkeletalTracking
                 }
                 else
                 {
-                    InputSimulator.SimulateKeyDown(VirtualKeyCode.RIGHT);
+                    InputSimulator.SimulateKeyDown(VirtualKeyCode.VK_L);
                     
                 }
                 return true;
             }
             else
             {
-                if (InputSimulator.IsKeyDown(VirtualKeyCode.RIGHT)) InputSimulator.SimulateKeyUp(VirtualKeyCode.RIGHT);
-                if (InputSimulator.IsKeyDown(VirtualKeyCode.LEFT)) InputSimulator.SimulateKeyUp(VirtualKeyCode.LEFT);
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_L)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_L);
+                if (InputSimulator.IsKeyDown(VirtualKeyCode.VK_K)) InputSimulator.SimulateKeyUp(VirtualKeyCode.VK_K);
                 if (InputSimulator.IsKeyDown(VirtualKeyCode.OEM_COMMA)) InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_COMMA);
                 if (InputSimulator.IsKeyDown(VirtualKeyCode.OEM_PERIOD)) InputSimulator.SimulateKeyUp(VirtualKeyCode.OEM_PERIOD);
                 return false;
@@ -166,7 +166,7 @@ namespace SkeletalTracking
             // y increases towards top
             // hand > elbow > shoulder
 
-            if (deltaY < 0.03
+            if (deltaY < 0.05
                     && rightHand.Position.Y > rightElbow.Position.Y
                     && rightElbow.Position.Y > rightShoulder.Position.Y
                     && deltaX < 0.3

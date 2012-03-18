@@ -27,6 +27,7 @@ limitations under the License.
 //----------------------------------------------------------------------------
 
 soundSwitch = false;
+isSoundOn = false;
 
 turnLeft = false;
 turnRight = false;
@@ -88,7 +89,7 @@ function keyDown(event) {
     altitudeDown = true;
     event.returnValue = false;
 	jetpack.setVisibility(false);
-  } else if (event.keyCode == 37) {  // Key Left Arrow: Turn Left.
+  } else if (event.keyCode == 37 || event.keyCode == 75) {  // Key Left Arrow or K: Turn Left.
     turnLeft = true;
     turn_speed = 1;
     leftActive.setVisibility(true);
@@ -106,7 +107,7 @@ function keyDown(event) {
   	rightActive.setVisibility(true);
   	rightInactive.setVisibility(false);
     event.returnValue = false;
-  } else if (event.keyCode == 39) {  // Key Right Arrow: Turn Right.
+  } else if (event.keyCode == 39 || event.keyCode == 76) {  // Key Right Arrow or L: Turn Right.
     turnRight = true;
     turn_speed = 1;
     rightActive.setVisibility(true);
@@ -148,7 +149,7 @@ function keyDown(event) {
     event.returnValue = false;
   } else if (augmented_reality == false && event.keyCode == 89) {   // Y: Show augmented reality
   		var link = ge.createLink('');		// class ge inherited from index2.html
-		var href = 'http://www.stanford.edu/~hyunggu/etc/cs247_twit.kml';
+		var href = 'http://www.stanford.edu/~hyunggu/etc/cs247_twit2.kml';
 	  	link.setHref(href);
 	  	networkLink = ge.createNetworkLink('');
 	  	networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
@@ -179,7 +180,7 @@ function keyUp(event) {
   } else if (event.keyCode == 74) {  // Altitude Down
     altitudeDown = false;
     event.returnValue = false;
-  } else if (event.keyCode == 37) {  // Left.
+  } else if (event.keyCode == 37 || event.keyCode == 75) {  // Left.
     turnLeft = false;
     leftInactive.setVisibility(true);
     leftActive.setVisibility(false);
@@ -196,7 +197,7 @@ function keyUp(event) {
     rightActive.setVisibility(false);
   	turn_speed = 1;
     event.returnValue = false;
-  } else if (event.keyCode == 39) {  // Right.
+  } else if (event.keyCode == 39 || event.keyCode == 76) {  // Right.
     turnRight = false;
     rightInactive.setVisibility(true);
     rightActive.setVisibility(false);
@@ -465,10 +466,14 @@ FirstPersonCam.prototype.update = function() {
 };
 
 function playSound(soundSwitch)	{
-	if (soundSwitch) 	{
+	if (soundSwitch && !isSoundOn) 	{
 		jpsound.src="http://www.stanford.edu/~hyunggu/etc/cs247/jetpack.mp3";
+		document.getElementById('jpsound').volume = 0;
+		isSoundOn = true;
 	}
-	else	{
-		jpsound.src="";
+	else if (!soundSwitch && isSoundOn) {
+		//jpsound.src="";
+		document.getElementById('jpsound').volume = -10000;
+		isSoundOn = false;
 	}
 };
