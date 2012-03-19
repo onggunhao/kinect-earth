@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+
+<Document>
+	<name>GeoParty Twits</name>	  
+      <Style id="twitterbird">
+                <IconStyle>
+                     <Icon>
+                       <href>http://www.stanford.edu/~hyunggu/etc/twitterbird.png</href>
+	                      </Icon>
+				<scale>5.0</scale>
+	                 </IconStyle>
+	     </Style>
+
+	<LookAt>
+		<gx:TimeSpan>
+		</gx:TimeSpan>
+		<longitude>2.2945</longitude>
+		<latitude>48.8583</latitude>
+		<altitude>2500</altitude>
+		<heading>0</heading>
+		<tilt>85</tilt>
+		<range>1500</range>
+		<altitudeMode>relativeToGround</altitudeMode>
+	</LookAt>
+ 
+<Placemark> 
+     <name>J'aime manger des baguettes françaises!</name>
+         <description>
+       <![CDATA[
+        me manger des baguettes françaises!]]>
+      </description>
+          <styleUrl>#twitterbird</styleUrl>
+               <Point>
+                <coordinates>2.2970,48.8568</coordinates>
+               </Point>
+     </Placemark>
+</Document>
+</kml>
