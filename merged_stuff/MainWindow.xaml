@@ -13,7 +13,8 @@
         <Label Canvas.Left="1056" Canvas.Top="800" Content="Current Controller:" Height="28" Name="label1" Width="108" />
         <Label Canvas.Left="818" Canvas.Top="800" Content="Example Controller" Height="28" Name="controllerText" Width="140" />
         <TextBlock Canvas.Left="447" Canvas.Top="0" Height="17" Name="textBlock1" Text="(Use keyboard {1, 2} to change controllers)" Width="249" />
-        <Image Canvas.Left="0" Canvas.Top="893" Height="104" Name="image2" Stretch="Fill" Width="1680" Source="/SkeletalTracking;component/Images/sfbanner.png" />
+        <Image Canvas.Left="0" Canvas.Top="893" Height="104" Name="bannerSF" Stretch="Fill" Width="1680" Source="/SkeletalTracking;component/Images/sfbanner.png" />
+        <Image Canvas.Left="0" Canvas.Top="893" Height="104" Name="bannerParis" Stretch="Fill" Width="1680" Source="/SkeletalTracking;component/Images/parisbanner.png" Visibility="Hidden" />
     </Canvas>
 
 </Window>
