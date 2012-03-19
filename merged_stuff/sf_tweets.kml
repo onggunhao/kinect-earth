@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+
+<Document>
+	<name>GeoParty Twits</name>
+    <Style id="sn_blue-dot_copy3">
+	      <IconStyle>
+		       <Icon>
+			    <href>http://www.google.com/intl/en_us/mapfiles/ms/icons/blue-dot.png</href>
+			   </Icon>
+			  <scale>3.0</scale>
+		 </IconStyle>
+	 </Style>	
+
+	   <Style id="startpin">
+	       <IconStyle>
+	            <Icon>
+	           <href>http://www.stanford.edu/~hyunggu/etc/startpin.png</href>
+	             </Icon>
+	              <scale>3.0</scale>
+	          </IconStyle>
+	     </Style>
+	
+       <Style id="finishpin">
+           <IconStyle>
+                    <Icon>
+                    <href>http://www.stanford.edu/~hyunggu/etc/finishpin.png</href>
+	                   </Icon>
+	                     <scale>3.0</scale>
+	                  </IconStyle>
+	    </Style>
+
+	<Style id="arrow_right">
+        <IconStyle>
+              <Icon>
+          <href>
+		 http://www.stanford.edu/~hyunggu/etc/rightarrow.png</href> 
+           </Icon>
+		<scale>5.0</scale>
+	  	   </IconStyle>
+	</Style>
+
+    <Style id="arrow_left">
+              <IconStyle>
+	                <Icon>
+					<href>http://www.stanford.edu/~hyunggu/etc/leftarrow.png</href>
+		             </Icon>
+				<scale>5.0</scale>
+		       </IconStyle>
+    </Style>
+	  
+      <Style id="twitterbird">
+                <IconStyle>
+                     <Icon>
+                       <href>http://www.stanford.edu/~hyunggu/etc/twitterbird.png</href>
+	                      </Icon>
+				<scale>3.0</scale>
+	                 </IconStyle>
+	     </Style>
+
+	<LookAt>
+		<gx:TimeSpan>
+		</gx:TimeSpan>
+		<longitude>-122.165413</longitude>
+		<latitude>37.422590</latitude>
+		<altitude>2500</altitude>
+		<heading>0</heading>
+		<tilt>85</tilt>
+		<range>1500</range>
+		<altitudeMode>relativeToGround</altitudeMode>
+	</LookAt>
+	
+    <Placemark>
+      <name>@Tatiana on Sun Mar 4 10:55:45 +0000 2012</name>
+      <description>
+      <![CDATA[
+       	I just saw the President, Obama. 
+      ]]>
+    </description>
+    <styleUrl>#twitterbird</styleUrl>
+      <Point>
+        <coordinates>-122.39997,37.79394</coordinates>
+      </Point>
+    </Placemark>
+
+  <Placemark>
+	   <name>@Huyen on Sun Mar 4 10:55:45 +0000 2012</name>
+	   <description>
+	   <![CDATA[
+		 I feel tired but am very excited. 
+	   ]]>
+	  </description>
+	  <styleUrl>#twitterbird</styleUrl>
+		<Point>
+		  <coordinates>-122.39911,37.79494</coordinates>
+		</Point>
+  </Placemark>
+
+  <Placemark>
+    <name>@Tatiana on Tue Feb 21 10:55:05 +0000 2012</name>
+    <description>
+    <![CDATA[
+      Look at the ocean!
+    ]]>
+  </description>
+  <styleUrl>#twitterbird</styleUrl>
+    <Point>
+      <coordinates>-122.448425,37.802907,0</coordinates>
+    </Point>
+  </Placemark>
+  
+   <Placemark>
+    <name>@Hyunggu on Wed Feb 22 11:05:05 +0000 2012</name>
+  <description>
+    <![CDATA[
+      What a beautiful day!
+    ]]>
+  </description>
+  <styleUrl>#twitterbird</styleUrl>
+    <Point>
+      <coordinates>-122.418425,37.782907,0</coordinates>
+    </Point>
+  </Placemark>
+  
+     <Placemark>
+    <name>@Daniel on Wed Feb 22 19:05:05 +0000 2012</name>
+  <description>
+    <![CDATA[
+      Cheers! SF Giants!
+    ]]>
+  </description>
+  <styleUrl>#twitterbird</styleUrl>
+    <Point>
+      <coordinates>-122.389590,37.777500,0</coordinates>
+    </Point>
+  </Placemark>
+  
+     <Placemark>
+    <name>@Huyen on Wed Feb 22 02:05:05 +0000 2012</name>
+  <description>
+    <![CDATA[
+      What a beautiful day!
+    ]]>
+  </description>
+  <styleUrl>#twitterbird</styleUrl>
+    <Point>
+      <coordinates>-122.4178425,37.802907,0</coordinates>
+    </Point>
+  </Placemark>
+  
+     <Placemark>
+    <name>@Hyunggu on Wed Feb 22 03:05:05 +0000 2012</name>
+  <description>
+    <![CDATA[
+      What a beautiful day!
+    ]]>
+  </description>
+  <styleUrl>#twitterbird</styleUrl>
+    <Point>
+      <coordinates>-122.408625,37.785907,0</coordinates>
+    </Point>
+  </Placemark>
+  
+     <Placemark>
+    <name>@Hyunggu on Wed Feb 22 16:30:05 +0000 2012</name>
+  <description>
+    <![CDATA[
+      Look at the Golden Gates Bridge!
+    ]]>
+  </description>
+  <styleUrl>#twitterbird</styleUrl>
+    <Point>
+      <coordinates>-122.468425,37.803807,0</coordinates>
+    </Point>
+  </Placemark>
+
+   <Placemark>
+    <name>@Hyunggu on Wed Feb 22 05:05:05 +0000 2012</name>
+  <description>
+    <![CDATA[
+      What a beautiful day!
+    ]]>
+  </description>
+    <Point>
+      <coordinates>-122.165413,37.422593,0</coordinates>
+    </Point>
+  </Placemark>
+
+   <Placemark>
+  <name>@Huyen on Wed Feb 22 11:17:25 +0000 2012</name>
+  <description>
+    <![CDATA[
+      Going to classroom for CS247
+    ]]>
+  </description>
+    <Point>
+      <coordinates>-122.165413,37.422590,0</coordinates>
+    </Point>
+  </Placemark>
+  
+
+</Document>
+</kml>

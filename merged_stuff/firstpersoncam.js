@@ -348,7 +348,7 @@ FirstPersonCam.prototype.updatePosition = function (dt) {
         }
         var forward = 0;
         if (moveForward || moveBackward) {
-            var forwardVelocity = 15 * forward_speed * (1 + 20*(cameraAltitude/500));
+            var forwardVelocity = 15 * forward_speed * (1 + 10*(cameraAltitude/500));
             if (moveBackward)
                 forwardVelocity *= -1;
             forward = forwardVelocity * dt;
