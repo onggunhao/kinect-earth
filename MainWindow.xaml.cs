@@ -34,9 +34,8 @@ namespace SkeletalTracking
             //Browser.LoadCompleted += BrowserOnLoadCompleted;
 
             //Make sure to change this to your directory
-          //  Browser.Navigate(new Uri("C:/Users/n00b/Downloads/cs247-prototype/merged_stuff/index2.html"));
-            Browser.Navigate(new Uri("C:/Users/n00b/Downloads/cs247-prototype/tati/index2.html"));
-            //Browser.Navigate(new Uri("C:/Users/Huyen Tran/Desktop/cs247-prototype/merged_stuff/index2.html"));
+            Browser.Navigate(new Uri("C:/Users/n00b/Downloads/cs247-prototype/index2.html"));
+          //  Browser.Navigate(new Uri("C:/Users/Huyen Tran/Desktop/cs247-prototype/merged_stuff/index2.html"));
            
             Keyboard.Focus(Browser);
         }
@@ -80,28 +79,29 @@ namespace SkeletalTracking
             huyen = new HuyenController(this);
             hyunggu = new HyungguController(this);
             super = new SuperController(this);
-            currentController = yourController;
+            currentController = super;
             InitTargets();
             i = 0;
         }
         
         private void InitTargets()
         {
-            targets.Add(1, new Target(target1, 1));
+            /*targets.Add(1, new Target(target1, 1));
             targets.Add(2, new Target(target2, 2));
             targets.Add(3, new Target(target3, 3));
             targets.Add(4, new Target(target4, 4));
             targets.Add(5, new Target(target5, 5));
             targets.Add(6, new Target(targetLeft, 6));
             targets.Add(7, new Target(targetRight, 7));
+             */
             currentController.controllerActivated(targets);
-            Canvas.SetZIndex(target1, 100);
+            /*Canvas.SetZIndex(target1, 100);
             Canvas.SetZIndex(target2, 100);
             Canvas.SetZIndex(target3, 100);
             Canvas.SetZIndex(target4, 100);
             Canvas.SetZIndex(target5, 100);
             Canvas.SetZIndex(targetLeft, 100);
-            Canvas.SetZIndex(targetRight, 100);
+            Canvas.SetZIndex(targetRight, 100);*/
         }
 
         private void SetupKinect()
@@ -136,10 +136,10 @@ namespace SkeletalTracking
                 nui.SkeletonEngine.SmoothParameters = parameters;
 
                 //Open the video stream
-                nui.VideoStream.Open(ImageStreamType.Video, 2, ImageResolution.Resolution640x480, ImageType.Color);
+                //nui.VideoStream.Open(ImageStreamType.Video, 2, ImageResolution.Resolution640x480, ImageType.Color);
                 
                 //Force video to the background
-                Canvas.SetZIndex(image1, -10000);
+                //Canvas.SetZIndex(image1, -10000);
             }
         }
 
@@ -163,30 +163,7 @@ namespace SkeletalTracking
 
             if(skeleton != null)
             {
-                SetEllipsePosition(headEllipse, skeleton.Joints[JointID.Head]);
-                SetEllipsePosition(leftEllipse, skeleton.Joints[JointID.HandLeft]);
-                SetEllipsePosition(rightEllipse, skeleton.Joints[JointID.HandRight]);
-                SetEllipsePosition(shoulderCenter, skeleton.Joints[JointID.ShoulderCenter]);
-                SetEllipsePosition(shoulderRight, skeleton.Joints[JointID.ShoulderRight]);
-                SetEllipsePosition(shoulderLeft, skeleton.Joints[JointID.ShoulderLeft]);
-                SetEllipsePosition(ankleRight, skeleton.Joints[JointID.AnkleRight]);
-                SetEllipsePosition(ankleLeft, skeleton.Joints[JointID.AnkleLeft]);
-                SetEllipsePosition(footLeft, skeleton.Joints[JointID.FootLeft]);
-                SetEllipsePosition(footRight, skeleton.Joints[JointID.FootRight]);
-                SetEllipsePosition(wristLeft, skeleton.Joints[JointID.WristLeft]);
-                SetEllipsePosition(wristRight, skeleton.Joints[JointID.WristRight]);
-                SetEllipsePosition(elbowLeft, skeleton.Joints[JointID.ElbowLeft]);
-                SetEllipsePosition(elbowRight, skeleton.Joints[JointID.ElbowRight]);
-                SetEllipsePosition(ankleLeft, skeleton.Joints[JointID.AnkleLeft]);
-                SetEllipsePosition(footLeft, skeleton.Joints[JointID.FootLeft]);
-                SetEllipsePosition(footRight, skeleton.Joints[JointID.FootRight]);
-                SetEllipsePosition(wristLeft, skeleton.Joints[JointID.WristLeft]);
-                SetEllipsePosition(wristRight, skeleton.Joints[JointID.WristRight]);
-                SetEllipsePosition(kneeLeft, skeleton.Joints[JointID.KneeLeft]);
-                SetEllipsePosition(kneeRight, skeleton.Joints[JointID.KneeRight]);
-                SetEllipsePosition(hipCenter, skeleton.Joints[JointID.HipCenter]);
                 currentController.processSkeletonFrame(skeleton, targets);
-
             }
         }
 
@@ -215,13 +192,28 @@ namespace SkeletalTracking
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            /*if (e.Key == Key.D9)
+            if (e.Key == Key.D1)
             {
-                currentController = exampleController;
-                controllerText.Content = "Example Controller";
+                currentController = super;
+                controllerText.Content = "SUPER CONTROLLER";
                 currentController.controllerActivated(targets);
-            }*/
+            }
 
+            if (e.Key == Key.D6)
+            {
+                bannerSF.Visibility = Visibility.Hidden;
+                bannerParis.Visibility = Visibility.Visible;
+                //InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_9);
+            }
+
+            if (e.Key == Key.D7)
+            {
+                bannerSF.Visibility = Visibility.Visible;
+                bannerParis.Visibility = Visibility.Hidden;
+                //InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_0);
+            }
+
+            /*
             if (e.Key == Key.D6)
             {
                 currentController = yourController;
@@ -242,14 +234,7 @@ namespace SkeletalTracking
                 controllerText.Content = "HYUNGGU CONTROLLER";
                 currentController.controllerActivated(targets);
             }
-
-            if (e.Key == Key.D9)
-            {
-                currentController = super;
-                controllerText.Content = "SUPER CONTROLLER";
-                currentController.controllerActivated(targets);
-            }
-
+             */
         }
     }
 
