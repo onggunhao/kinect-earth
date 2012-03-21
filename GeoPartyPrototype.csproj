@@ -73,10 +73,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HyungguController.cs" />
-    <Compile Include="HuyenController.cs" />
-    <Compile Include="CustomController.cs" />
-    <Compile Include="SkeletonController.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
